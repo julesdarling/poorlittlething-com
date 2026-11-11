@@ -10,7 +10,6 @@ let products = [];
 let activeFilter = 'All';
 let controllers = [];
 let intersectionObserver;
-let motionContext;
 let gallery3D;
 let galleryPromise;
 
@@ -26,14 +25,11 @@ function createPiece(product, index) {
     <div class="object-stage" tabindex="0" role="slider" aria-label="Turn ${title}" aria-valuemin="-90" aria-valuemax="90" aria-valuenow="0" aria-valuetext="0 degrees" aria-orientation="horizontal" aria-describedby="viewer-help viewer-keyboard-help viewer-state-${index}">
       <img class="viewer-background" src="${escapeHtml(product.background || '/assets/toy-world.webp')}" alt="" aria-hidden="true" width="1000" height="1000" loading="lazy" />
       <img class="object-poster" src="${escapeHtml(product.poster || product.views?.[0] || '')}" alt="${title}" width="1000" height="1000" loading="lazy" />
-      <span class="piece-number" aria-hidden="true">${String(index + 1).padStart(2, '0')}</span>
-      <span class="viewer-state" id="viewer-state-${index}">Interactive 3D</span>
-      <span class="object-turn-label" aria-hidden="true">MOVE TO TURN</span>
+      <span class="viewer-state sr-only" id="viewer-state-${index}">Interactive 3D</span>
     </div>
     <button class="retry-3d" type="button" hidden>Retry 3D</button>
-    <details class="piece-details"><summary><span class="piece-title">${title}<span class="piece-category">${escapeHtml(product.category)}</span></span><span class="detail-plus" aria-hidden="true">+</span></summary><div class="piece-description"><p>${escapeHtml(product.description)}</p><p class="piece-medium">${escapeHtml(product.material || 'Sculptural object')} · ${escapeHtml(String(product.year || '2026'))}</p></div></details>
+    <h3 class="piece-title">${title}</h3>
     <a class="stl-download" href="${escapeHtml(product.stl)}" download="poor-little-thing-${escapeHtml(product.id)}-assembly-mm.stl" aria-label="Download ${title} assembly STL in millimeters${downloadSize}">Download assembly STL<span>STL · mm${downloadSize}</span></a>`;
-  card.querySelector('details').addEventListener('toggle', () => ScrollTrigger.refresh());
   const controller = gallery3D.add(card, product);
   controllers.push(controller);
   card._pieceController = controller;
@@ -56,7 +52,7 @@ function updateFilter(next) {
     card.hidden = next !== 'All' && card.dataset.category !== next;
     if (!card.hidden) count++;
   });
-  document.querySelector('#collection-status').textContent = `${count} ${next === 'All' ? 'pieces' : next.toLowerCase()} in the collection.`;
+  document.querySelector('#collection-status').textContent = `${count} ${next === 'All' ? 'pieces' : next === 'Apparel' ? 'apparel pieces' : next.toLowerCase()} in the collection.`;
   ScrollTrigger.refresh();
 }
 document.querySelectorAll('.filter').forEach(button => button.addEventListener('click', () => updateFilter(button.dataset.filter)));
@@ -80,7 +76,6 @@ async function loadCollection() {
     intersectionObserver = new IntersectionObserver(entries => entries.forEach(entry => entry.target._pieceController.setVisible(entry.isIntersecting)), { rootMargin: '200px 0px' });
     controllers.forEach(({ card }) => intersectionObserver.observe(card));
     updateFilter(activeFilter);
-    setupProductMotion();
   } catch {
     document.querySelector('#collection-error').hidden = false;
   } finally {
@@ -102,19 +97,6 @@ media.add('(prefers-reduced-motion: no-preference)', () => {
   gsap.to('.idea-spark', { rotation: 150, ease: 'none', scrollTrigger: { trigger: '.idea', start: 'top bottom', end: 'bottom top', scrub: 1 } });
   gsap.from('.inquiry-link h2', { y: 35, opacity: 0, duration: 1, ease: 'power3.out', scrollTrigger: { trigger: '.inquiries', start: 'top 80%', once: true } });
 }, app);
-
-function setupProductMotion() {
-  motionContext?.revert();
-  motionContext = gsap.matchMedia();
-  motionContext.add('(prefers-reduced-motion: no-preference)', () => {
-    const triggers = ScrollTrigger.batch('.product-card', {
-      start: 'top 96%', once: true,
-      onEnter: cards => gsap.fromTo(cards, { y: 25, opacity: 0 }, { y: 0, opacity: 1, stagger: .06, duration: .7, ease: 'power3.out', clearProps: 'transform,opacity' })
-    });
-    return () => triggers.forEach(trigger => trigger.kill());
-  }, grid);
-  ScrollTrigger.refresh();
-}
 
 document.fonts.ready.then(() => ScrollTrigger.refresh());
 loadCollection();

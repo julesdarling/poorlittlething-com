@@ -19,7 +19,7 @@ The production website is generated in `dist/`. The GitHub Actions workflow buil
 
 ## Content
 
-- `public/products.json` contains each piece's title, description, category, colored GLB, assembly STL, and poster image URLs.
+- `public/products.json` contains each piece's title, category, colored GLB, assembly STL, and poster image URLs.
 - `public/assets/models/` holds the interactive colored GLB models.
 - `public/downloads/` holds the complete displayed assembly STL files in millimeters.
 - `public/assets/products/` holds fallback poster images.
