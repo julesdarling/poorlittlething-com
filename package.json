@@ -1,0 +1,18 @@
+{
+  "name": "poor-little-thing",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 127.0.0.1 --port 4173",
+    "build": "vite build",
+    "preview": "vite preview --host 127.0.0.1 --port 4173"
+  },
+  "dependencies": {
+    "@fontsource-variable/albert-sans": "5.3.0",
+    "gsap": "3.15.1"
+  },
+  "devDependencies": {
+    "vite": "8.3.8"
+  }
+}

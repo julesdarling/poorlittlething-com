@@ -1,0 +1,362 @@
+[
+  {
+    "id": "rope-saw",
+    "title": "Rope Saw",
+    "category": "Objects",
+    "description": "A familiar silhouette, with a very different story.",
+    "views": [
+      "/assets/products/rope-saw/01.webp",
+      "/assets/products/rope-saw/02.webp",
+      "/assets/products/rope-saw/03.webp",
+      "/assets/products/rope-saw/04.webp"
+    ],
+    "angleDegrees": [
+      -90,
+      -30,
+      30,
+      90
+    ],
+    "material": "3D printed sculpture",
+    "year": "2026"
+  },
+  {
+    "id": "palm-star",
+    "title": "Palm Star",
+    "category": "Objects",
+    "description": "A little star with a less innocent side.",
+    "views": [
+      "/assets/products/palm-star/01.webp",
+      "/assets/products/palm-star/02.webp",
+      "/assets/products/palm-star/03.webp",
+      "/assets/products/palm-star/04.webp"
+    ],
+    "angleDegrees": [
+      -90,
+      -30,
+      30,
+      90
+    ],
+    "material": "3D printed sculpture",
+    "year": "2026"
+  },
+  {
+    "id": "little-c",
+    "title": "Little C",
+    "category": "Objects",
+    "description": "A bright, small study in pressure and possibility.",
+    "views": [
+      "/assets/products/little-c/01.webp",
+      "/assets/products/little-c/02.webp",
+      "/assets/products/little-c/03.webp",
+      "/assets/products/little-c/04.webp"
+    ],
+    "angleDegrees": [
+      -90,
+      -30,
+      30,
+      90
+    ],
+    "material": "3D printed sculpture",
+    "year": "2026"
+  },
+  {
+    "id": "talon",
+    "title": "Talon",
+    "category": "Objects",
+    "description": "A single sweeping curve. A bold little gesture.",
+    "views": [
+      "/assets/products/talon/01.webp",
+      "/assets/products/talon/02.webp",
+      "/assets/products/talon/03.webp",
+      "/assets/products/talon/04.webp"
+    ],
+    "angleDegrees": [
+      -90,
+      -30,
+      30,
+      90
+    ],
+    "material": "3D printed sculpture",
+    "year": "2026"
+  },
+  {
+    "id": "trio",
+    "title": "Trio",
+    "category": "Objects",
+    "description": "Three points, one playful proposition.",
+    "views": [
+      "/assets/products/trio/01.webp",
+      "/assets/products/trio/02.webp",
+      "/assets/products/trio/03.webp",
+      "/assets/products/trio/04.webp"
+    ],
+    "angleDegrees": [
+      -90,
+      -30,
+      30,
+      90
+    ],
+    "material": "3D printed sculpture",
+    "year": "2026"
+  },
+  {
+    "id": "bramble",
+    "title": "Bramble",
+    "category": "Objects",
+    "description": "A miniature crown of thorns in primary color.",
+    "views": [
+      "/assets/products/bramble/01.webp",
+      "/assets/products/bramble/02.webp",
+      "/assets/products/bramble/03.webp",
+      "/assets/products/bramble/04.webp"
+    ],
+    "angleDegrees": [
+      -90,
+      -30,
+      30,
+      90
+    ],
+    "material": "3D printed sculpture",
+    "year": "2026"
+  },
+  {
+    "id": "orbit",
+    "title": "Orbit",
+    "category": "Objects",
+    "description": "A tactile landscape, wrapped around a small world.",
+    "views": [
+      "/assets/products/orbit/01.webp",
+      "/assets/products/orbit/02.webp",
+      "/assets/products/orbit/03.webp",
+      "/assets/products/orbit/04.webp"
+    ],
+    "angleDegrees": [
+      -90,
+      -30,
+      30,
+      90
+    ],
+    "material": "3D printed sculpture",
+    "year": "2026"
+  },
+  {
+    "id": "scallop",
+    "title": "Scallop",
+    "category": "Objects",
+    "description": "A turning wheel of repeating peaks.",
+    "views": [
+      "/assets/products/scallop/01.webp",
+      "/assets/products/scallop/02.webp",
+      "/assets/products/scallop/03.webp",
+      "/assets/products/scallop/04.webp"
+    ],
+    "angleDegrees": [
+      -90,
+      -30,
+      30,
+      90
+    ],
+    "material": "3D printed sculpture",
+    "year": "2026"
+  },
+  {
+    "id": "block-party",
+    "title": "Block Party",
+    "category": "Objects",
+    "description": "Building-block confidence with a mischievous edge.",
+    "views": [
+      "/assets/products/block-party/01.webp",
+      "/assets/products/block-party/02.webp",
+      "/assets/products/block-party/03.webp",
+      "/assets/products/block-party/04.webp"
+    ],
+    "angleDegrees": [
+      -90,
+      -30,
+      30,
+      90
+    ],
+    "material": "3D printed sculpture",
+    "year": "2026"
+  },
+  {
+    "id": "crank",
+    "title": "Crank",
+    "category": "Objects",
+    "description": "A small machine for a very active imagination.",
+    "views": [
+      "/assets/products/crank/01.webp",
+      "/assets/products/crank/02.webp",
+      "/assets/products/crank/03.webp",
+      "/assets/products/crank/04.webp"
+    ],
+    "angleDegrees": [
+      -90,
+      -30,
+      30,
+      90
+    ],
+    "material": "3D printed sculpture",
+    "year": "2026"
+  },
+  {
+    "id": "crescent",
+    "title": "Crescent",
+    "category": "Objects",
+    "description": "Two arcs held in a delicate conversation.",
+    "views": [
+      "/assets/products/crescent/01.webp",
+      "/assets/products/crescent/02.webp",
+      "/assets/products/crescent/03.webp",
+      "/assets/products/crescent/04.webp"
+    ],
+    "angleDegrees": [
+      -90,
+      -30,
+      30,
+      90
+    ],
+    "material": "3D printed sculpture",
+    "year": "2026"
+  },
+  {
+    "id": "alligator",
+    "title": "Alligator",
+    "category": "Objects",
+    "description": "A toy-box grin, stretched into something stranger.",
+    "views": [
+      "/assets/products/alligator/01.webp",
+      "/assets/products/alligator/02.webp",
+      "/assets/products/alligator/03.webp",
+      "/assets/products/alligator/04.webp"
+    ],
+    "angleDegrees": [
+      -90,
+      -30,
+      30,
+      90
+    ],
+    "material": "3D printed sculpture",
+    "year": "2026"
+  },
+  {
+    "id": "tenderizer",
+    "title": "Tenderizer",
+    "category": "Objects",
+    "description": "A playful silhouette with a prickly disposition.",
+    "views": [
+      "/assets/products/tenderizer/01.webp",
+      "/assets/products/tenderizer/02.webp",
+      "/assets/products/tenderizer/03.webp",
+      "/assets/products/tenderizer/04.webp"
+    ],
+    "angleDegrees": [
+      -90,
+      -30,
+      30,
+      90
+    ],
+    "material": "3D printed sculpture",
+    "year": "2026"
+  },
+  {
+    "id": "palm-heart",
+    "title": "Palm Heart",
+    "category": "Objects",
+    "description": "Sweetness and sharpness, held in the same hand.",
+    "views": [
+      "/assets/products/palm-heart/01.webp",
+      "/assets/products/palm-heart/02.webp",
+      "/assets/products/palm-heart/03.webp",
+      "/assets/products/palm-heart/04.webp"
+    ],
+    "angleDegrees": [
+      -90,
+      -30,
+      30,
+      90
+    ],
+    "material": "3D printed sculpture",
+    "year": "2026"
+  },
+  {
+    "id": "flame-collar",
+    "title": "Flame Collar",
+    "category": "Wearables",
+    "description": "A small theater of fire, frame, and color.",
+    "views": [
+      "/assets/products/flame-collar/01.webp",
+      "/assets/products/flame-collar/02.webp",
+      "/assets/products/flame-collar/03.webp",
+      "/assets/products/flame-collar/04.webp"
+    ],
+    "angleDegrees": [
+      -90,
+      -30,
+      30,
+      90
+    ],
+    "material": "3D printed sculpture",
+    "year": "2026"
+  },
+  {
+    "id": "bunny-sweep",
+    "title": "Bunny Sweep",
+    "category": "Wearables",
+    "description": "A familiar pair of ears, ready for another role.",
+    "views": [
+      "/assets/products/bunny-sweep/01.webp",
+      "/assets/products/bunny-sweep/02.webp",
+      "/assets/products/bunny-sweep/03.webp",
+      "/assets/products/bunny-sweep/04.webp"
+    ],
+    "angleDegrees": [
+      -90,
+      -30,
+      30,
+      90
+    ],
+    "material": "3D printed sculpture",
+    "year": "2026"
+  },
+  {
+    "id": "puppy-fold",
+    "title": "Puppy Fold",
+    "category": "Wearables",
+    "description": "Soft curves, bright color, a change of character.",
+    "views": [
+      "/assets/products/puppy-fold/01.webp",
+      "/assets/products/puppy-fold/02.webp",
+      "/assets/products/puppy-fold/03.webp",
+      "/assets/products/puppy-fold/04.webp"
+    ],
+    "angleDegrees": [
+      -90,
+      -30,
+      30,
+      90
+    ],
+    "material": "3D printed sculpture",
+    "year": "2026"
+  },
+  {
+    "id": "tall-sweep",
+    "title": "Tall Sweep",
+    "category": "Wearables",
+    "description": "A tall, curious silhouette for an imagined self.",
+    "views": [
+      "/assets/products/tall-sweep/01.webp",
+      "/assets/products/tall-sweep/02.webp",
+      "/assets/products/tall-sweep/03.webp",
+      "/assets/products/tall-sweep/04.webp"
+    ],
+    "angleDegrees": [
+      -90,
+      -30,
+      30,
+      90
+    ],
+    "material": "3D printed sculpture",
+    "year": "2026"
+  }
+]
