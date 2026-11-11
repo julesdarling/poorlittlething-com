@@ -43,7 +43,7 @@ function createPiece(product, index) {
     <div class="object-stage" aria-label="${escapeHtml(product.title)}, four views across 180 degrees">
       <span class="piece-number" aria-hidden="true">${String(index + 1).padStart(2, '0')}</span>
       ${product.views.map((view, i) => `<img ${i === 0 ? 'class="is-active"' : ''} data-src="${escapeHtml(view)}" alt="${i === 0 ? escapeHtml(product.title) : ''}" ${i !== 0 ? 'aria-hidden="true"' : ''} width="800" height="800" decoding="async" />`).join('')}
-      <span class="object-turn-label" aria-hidden="true">← TURN ME →</span>
+      <span class="object-turn-label" aria-hidden="true">TURN ME</span>
     </div>
     <div class="view-controls">
       <button class="view-arrow view-prev" type="button" aria-label="Previous view of ${escapeHtml(product.title)}">←</button>
