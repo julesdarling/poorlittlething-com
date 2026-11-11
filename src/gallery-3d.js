@@ -5,7 +5,7 @@ import { MeshoptDecoder } from 'three/addons/libs/meshopt_decoder.module.js';
 
 // One WebGL renderer serves every card. Each card receives a 2D copy of its
 // rendered scene, so the gallery never creates eighteen WebGL contexts.
-export function createGallery3D({ isPaused, reduceMotion }) {
+export function createGallery3D({ reduceMotion }) {
   const views = new Set();
   const queue = [];
   const loader = new GLTFLoader();
@@ -46,7 +46,28 @@ export function createGallery3D({ isPaused, reduceMotion }) {
   function fallback(view, message = 'Image preview. 3D is unavailable.') {
     view.stage.classList.remove('is-live');
     view.status.textContent = message;
-    view.card.querySelectorAll('.viewer-controls button, .viewer-controls input').forEach(control => { control.disabled = true; });
+    view.stage.setAttribute('role', 'img');
+    view.stage.setAttribute('aria-label', `${view.product.title}, image preview`);
+    view.stage.setAttribute('aria-describedby', view.status.id);
+    view.stage.tabIndex = -1;
+    ['aria-valuemin', 'aria-valuemax', 'aria-valuenow', 'aria-valuetext', 'aria-orientation'].forEach(attribute => view.stage.removeAttribute(attribute));
+  }
+
+  function exposeSlider(view) {
+    view.stage.setAttribute('role', 'slider');
+    view.stage.setAttribute('aria-label', `Turn ${view.product.title}`);
+    view.stage.setAttribute('aria-valuemin', '-90');
+    view.stage.setAttribute('aria-valuemax', '90');
+    view.stage.setAttribute('aria-orientation', 'horizontal');
+    view.stage.setAttribute('aria-describedby', `viewer-help viewer-keyboard-help ${view.status.id}`);
+    view.stage.tabIndex = 0;
+    updateSliderValue(view);
+  }
+
+  function updateSliderValue(view) {
+    const degrees = Math.round(THREE.MathUtils.radToDeg(view.angle));
+    view.stage.setAttribute('aria-valuenow', String(degrees));
+    view.stage.setAttribute('aria-valuetext', `${degrees} degrees`);
   }
 
   function disposeScene(scene) {
@@ -104,7 +125,7 @@ export function createGallery3D({ isPaused, reduceMotion }) {
     model.position.add(new THREE.Vector3(-center.x, -bounds.min.y, -center.z));
     root.scale.setScalar(scale);
     // Match the common toy-world plate. Every card shares this exact camera;
-    // the object alone is fitted to the stage and rotated by the controls.
+    // the object alone is fitted to the stage and rotated by pointer movement.
     const target = new THREE.Vector3(0, 1.1706807, 0);
     const camera = new THREE.PerspectiveCamera(24.19997, 1, .01, 100);
     camera.position.set(0, 5.4706807, 8.4);
@@ -133,7 +154,6 @@ export function createGallery3D({ isPaused, reduceMotion }) {
     floor.receiveShadow = true;
     scene.add(floor);
     Object.assign(view, { scene, root, camera, baseScale: scale, ready: true, dirty: true });
-    view.card.querySelectorAll('.viewer-controls button, .viewer-controls input').forEach(control => { control.disabled = false; });
     view.lastUsed = performance.now();
     applyPose(view);
   }
@@ -182,14 +202,13 @@ export function createGallery3D({ isPaused, reduceMotion }) {
   function applyPose(view) {
     if (!view.root) return;
     view.root.rotation.y = view.angle;
-    view.root.scale.setScalar(view.baseScale * view.zoom);
+    view.root.scale.setScalar(view.baseScale);
     view.dirty = true;
-    view.range.value = String(Math.round(THREE.MathUtils.radToDeg(view.angle)));
-    view.range.setAttribute('aria-valuetext', `${Math.round(THREE.MathUtils.radToDeg(view.angle))} degrees`);
+    view.stage.dataset.rotation = String(Math.round(THREE.MathUtils.radToDeg(view.angle)));
+    if (view.stage.getAttribute('role') === 'slider') updateSliderValue(view);
   }
 
   function interact(view) {
-    view.interactionUntil = performance.now() + 7000;
     if (!view.ready && !view.failed) { view.near = true; requestLoad(view); }
   }
 
@@ -203,13 +222,12 @@ export function createGallery3D({ isPaused, reduceMotion }) {
     const view = {
       card, product, stage, canvas, ctx: canvas.getContext('2d'),
       plate: stage.querySelector('.viewer-background'), plateReady: false,
-      range: card.querySelector('.turn-range'), status: card.querySelector('.viewer-state'),
-      retry: card.querySelector('.retry-3d'), angle: 0, zoom: 1, direction: 1,
+      status: card.querySelector('.viewer-state'),
+      retry: card.querySelector('.retry-3d'), angle: 0, targetAngle: 0,
       near: false, ready: false, loading: false, dirty: true, queued: false,
-      interactionUntil: 0, lastUsed: 0, pointer: null
+      lastUsed: 0, pointer: null
     };
     views.add(view);
-    view.card.querySelectorAll('.viewer-controls button, .viewer-controls input').forEach(control => { control.disabled = true; });
     if (!renderer || !view.ctx) {
       fallback(view);
       stage.tabIndex = -1;
@@ -217,25 +235,12 @@ export function createGallery3D({ isPaused, reduceMotion }) {
     }
     function turn(angle) {
       interact(view);
-      view.angle = THREE.MathUtils.clamp(angle, -Math.PI, Math.PI);
-      applyPose(view);
-    }
-    function zoomBy(delta) {
-      interact(view);
-      view.zoom = THREE.MathUtils.clamp(view.zoom + delta, .7, 1.45);
-      applyPose(view);
+      view.targetAngle = THREE.MathUtils.clamp(angle, -Math.PI / 2, Math.PI / 2);
     }
     function reset() {
       interact(view);
-      view.angle = 0;
-      view.zoom = 1;
-      view.direction = 1;
-      applyPose(view);
+      view.targetAngle = 0;
     }
-    view.range.addEventListener('input', () => turn(THREE.MathUtils.degToRad(Number(view.range.value))));
-    card.querySelector('.zoom-out').addEventListener('click', () => zoomBy(-.1));
-    card.querySelector('.zoom-in').addEventListener('click', () => zoomBy(.1));
-    card.querySelector('.reset-model').addEventListener('click', reset);
     view.retry.addEventListener('click', () => {
       view.failed = false;
       view.retry.hidden = true;
@@ -243,26 +248,25 @@ export function createGallery3D({ isPaused, reduceMotion }) {
       requestLoad(view);
     });
     stage.addEventListener('keydown', event => {
-      if (event.key === 'ArrowLeft') turn(view.angle - Math.PI / 12);
-      else if (event.key === 'ArrowRight') turn(view.angle + Math.PI / 12);
-      else if (event.key === '+' || event.key === '=') zoomBy(.1);
-      else if (event.key === '-') zoomBy(-.1);
-      else if (event.key === '0' || event.key === 'Home') reset();
+      if (event.key === 'ArrowLeft') turn(view.targetAngle - Math.PI / 12);
+      else if (event.key === 'ArrowRight') turn(view.targetAngle + Math.PI / 12);
+      else if (event.key === 'Home') turn(-Math.PI / 2);
+      else if (event.key === 'End') turn(Math.PI / 2);
+      else if (event.key === '0') reset();
       else return;
       event.preventDefault();
     });
-    stage.addEventListener('dblclick', reset);
     stage.addEventListener('pointerdown', event => {
-      if (event.button !== 0 || !event.isPrimary) return;
+      if (event.pointerType === 'mouse' || event.button !== 0 || !event.isPrimary) return;
       interact(view);
-      view.pointer = { id: event.pointerId, x: event.clientX, y: event.clientY, angle: view.angle, dragging: event.pointerType === 'mouse' };
-      if (event.pointerType === 'mouse') {
-        stage.setPointerCapture(event.pointerId);
-        stage.focus({ preventScroll: true });
-        event.preventDefault();
-      }
+      view.pointer = { id: event.pointerId, x: event.clientX, y: event.clientY, angle: view.targetAngle, dragging: false };
     });
     stage.addEventListener('pointermove', event => {
+      if (event.pointerType === 'mouse') {
+        const bounds = stage.getBoundingClientRect();
+        turn(((event.clientX - bounds.left) / bounds.width - .5) * Math.PI);
+        return;
+      }
       const pointer = view.pointer;
       if (!pointer || pointer.id !== event.pointerId) return;
       const dx = event.clientX - pointer.x;
@@ -273,14 +277,16 @@ export function createGallery3D({ isPaused, reduceMotion }) {
       }
       if (!pointer.dragging) return;
       stage.classList.add('is-dragging');
-      turn(pointer.angle + dx / stage.clientWidth * Math.PI * 2);
+      turn(pointer.angle + dx / stage.clientWidth * Math.PI);
+    });
+    stage.addEventListener('pointerleave', event => {
+      if (event.pointerType === 'mouse') view.targetAngle = view.angle;
     });
     function release(event) {
       if (view.pointer?.id !== event.pointerId) return;
       view.pointer = null;
       stage.classList.remove('is-dragging');
       if (stage.hasPointerCapture(event.pointerId)) stage.releasePointerCapture(event.pointerId);
-      view.interactionUntil = performance.now() + 7000;
     }
     stage.addEventListener('pointerup', release);
     stage.addEventListener('pointercancel', release);
@@ -311,10 +317,9 @@ export function createGallery3D({ isPaused, reduceMotion }) {
       const rect = view.stage.getBoundingClientRect();
       if (rect.bottom <= 0 || rect.top >= window.innerHeight || rect.right <= 0 || rect.left >= window.innerWidth || rect.width <= 0) continue;
       view.lastUsed = time;
-      if (!isPaused() && !view.pointer && !view.card.contains(document.activeElement) && time > view.interactionUntil) {
-        if (view.angle >= Math.PI / 2) view.direction = -1;
-        if (view.angle <= -Math.PI / 2) view.direction = 1;
-        view.angle += delta * .22 * view.direction;
+      if (Math.abs(view.targetAngle - view.angle) > .0001) {
+        view.angle = reduceMotion.matches ? view.targetAngle : THREE.MathUtils.lerp(view.angle, view.targetAngle, 1 - Math.exp(-delta * 16));
+        if (Math.abs(view.targetAngle - view.angle) < .0001) view.angle = view.targetAngle;
         applyPose(view);
       }
       const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
@@ -332,7 +337,7 @@ export function createGallery3D({ isPaused, reduceMotion }) {
         view.ctx.drawImage(renderer.domElement, 0, 0);
         view.stage.classList.add('is-live');
         view.status.textContent = 'Live 3D';
-        view.card.querySelectorAll('.viewer-controls button, .viewer-controls input').forEach(control => { control.disabled = false; });
+        exposeSlider(view);
         view.dirty = false;
       } catch {
         fallback(view);

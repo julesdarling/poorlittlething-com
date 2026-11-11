@@ -44,8 +44,9 @@
 
       <section class="collection" id="collection" aria-labelledby="collection-title">
         <div class="section-intro"><span class="section-number">01 / THE COLLECTION</span><div><h2 id="collection-title">Looks familiar.<br />Feels different.</h2><p>Primary colors. Unreasonable shapes. A little tension between what you remember and what you imagine.</p></div></div>
-        <div class="collection-toolbar"><div class="filters" role="group" aria-label="Filter collection"><button class="filter active" type="button" data-filter="All" aria-pressed="true">All pieces <span id="total-count"></span></button><button class="filter" type="button" data-filter="Objects" aria-pressed="false">Objects</button><button class="filter" type="button" data-filter="Wearables" aria-pressed="false">Wearables</button></div><button class="motion-toggle" type="button" aria-pressed="false"><span class="motion-icon" aria-hidden="true">Ⅱ</span><span class="motion-label">Pause rotation</span></button></div>
-        <p class="view-hint" id="viewer-help">Drag a piece to turn it in 3D. Use + and − to zoom, or Reset to begin again.</p>
+        <div class="collection-toolbar"><div class="filters" role="group" aria-label="Filter collection"><button class="filter active" type="button" data-filter="All" aria-pressed="true">All pieces <span id="total-count"></span></button><button class="filter" type="button" data-filter="Objects" aria-pressed="false">Objects</button><button class="filter" type="button" data-filter="Wearables" aria-pressed="false">Wearables</button></div></div>
+        <p class="view-hint" id="viewer-help">Move your mouse across a piece to turn it. On touch, swipe sideways.</p>
+        <p class="sr-only" id="viewer-keyboard-help">Use Left and Right to turn. Home shows the leftmost view, End shows the rightmost view, and 0 resets the piece.</p>
         <p class="sr-only" role="status" id="collection-status" aria-live="polite"></p>
         <div class="product-grid" id="product-grid" aria-busy="true"></div>
         <p class="collection-error" id="collection-error" hidden>The collection couldn’t load. <button id="retry-collection" type="button">Try again</button>, or <a href="mailto:inquiry@poorlittlething.com">say hello</a>.</p>

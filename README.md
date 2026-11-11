@@ -23,15 +23,15 @@ The production website is generated in `dist/`. The GitHub Actions workflow buil
 - `public/assets/models/` holds the interactive colored GLB models.
 - `public/downloads/` holds the complete displayed assembly STL files in millimeters.
 - `public/assets/products/` holds fallback poster images.
-- `public/assets/toy-world.webp` is the fixed backdrop shared by the live viewers.
+- `public/assets/backgrounds/` holds three coordinated toy-world backdrops, assigned per piece.
 - `public/assets/hero.webp` is the supplied hero artwork.
 - `public/assets/stacked-logo.svg` preserves the approved stacked brand artwork.
 - `index.html` contains the introduction, manifesto, inquiry address, and metadata.
 - `src/style.css` defines the layout and brand colors.
 
-The gallery uses one shared WebGL renderer with local canvas copies, avoiding a separate WebGL context for every piece. Models load near the viewport, and GPU resources are released as distant pieces leave the active set. Only the featured model rotates; its camera, lights, and background stay fixed. Auto rotation pauses during direct interaction or when the tab is hidden and starts paused for reduced motion or data saving preferences.
+The gallery uses one shared WebGL renderer with local canvas copies, avoiding a separate WebGL context for every piece. Models load near the viewport, and GPU resources are released as distant pieces leave the active set. Only the featured model rotates; its camera, lights, and background stay fixed. Models stay still at rest and respond to pointer movement. Reduced motion preferences remove the short interpolation between pointer positions.
 
-Drag horizontally to turn a model. The turn slider, zoom buttons, and reset control work with keyboard and touch. When a model has keyboard focus, left and right turn it, plus and minus zoom it, and zero resets it. Posters and STL links remain available when WebGL cannot run. STL downloads contain the displayed assembly at its source scale; they are not a prepared print layout. The site has no checkout, visitor accounts, analytics, or form backend.
+Move the mouse across a model to turn it through 180°. On touch, swipe horizontally; vertical page scrolling remains available. Each model exposes an accessible horizontal slider with its actual angle from −90° to +90°. When it has keyboard focus, Left and Right turn it, Home selects −90°, End selects +90°, and zero resets it. Screen readers receive the current rendered angle. Image fallbacks expose a non-focusable preview instead of slider controls. There are no visible rotation controls. Posters and STL links remain available when WebGL cannot run. STL downloads contain the displayed assembly at its source scale; they are not a prepared print layout. The site has no checkout, visitor accounts, analytics, or form backend.
 
 ## Domain
 

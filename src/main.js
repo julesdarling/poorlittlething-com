@@ -5,11 +5,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 gsap.registerPlugin(ScrollTrigger);
 const app = document.querySelector('main');
 const grid = document.querySelector('#product-grid');
-const motionButton = document.querySelector('.motion-toggle');
 const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
-const saveData = navigator.connection?.saveData === true;
-let paused = reduceMotion.matches || saveData;
-let manuallyPaused = false;
 let products = [];
 let activeFilter = 'All';
 let controllers = [];
@@ -20,22 +16,6 @@ let galleryPromise;
 
 document.querySelector('#year').textContent = new Date().getFullYear();
 
-function syncMotionButton() {
-  motionButton.setAttribute('aria-pressed', String(paused));
-  motionButton.querySelector('.motion-label').textContent = paused ? 'Play rotation' : 'Pause rotation';
-  motionButton.querySelector('.motion-icon').textContent = paused ? '▷' : 'Ⅱ';
-}
-syncMotionButton();
-motionButton.addEventListener('click', () => {
-  paused = !paused;
-  manuallyPaused = paused;
-  syncMotionButton();
-});
-reduceMotion.addEventListener('change', () => {
-  paused = reduceMotion.matches || manuallyPaused || saveData;
-  syncMotionButton();
-});
-
 function createPiece(product, index) {
   const card = document.createElement('article');
   card.className = 'product-card';
@@ -43,18 +23,12 @@ function createPiece(product, index) {
   const title = escapeHtml(product.title);
   const downloadSize = Number.isFinite(product.stlBytes) && product.stlBytes > 0 ? ` · ${(product.stlBytes / 1_000_000).toFixed(1)} MB` : '';
   card.innerHTML = `
-    <div class="object-stage" tabindex="0" role="img" aria-label="Interactive 3D ${title}. Drag left or right to turn. Use left and right arrow keys to turn, plus and minus to zoom, and zero to reset." aria-describedby="viewer-help viewer-state-${index}">
+    <div class="object-stage" tabindex="0" role="slider" aria-label="Turn ${title}" aria-valuemin="-90" aria-valuemax="90" aria-valuenow="0" aria-valuetext="0 degrees" aria-orientation="horizontal" aria-describedby="viewer-help viewer-keyboard-help viewer-state-${index}">
       <img class="viewer-background" src="${escapeHtml(product.background || '/assets/toy-world.webp')}" alt="" aria-hidden="true" width="1000" height="1000" loading="lazy" />
       <img class="object-poster" src="${escapeHtml(product.poster || product.views?.[0] || '')}" alt="${title}" width="1000" height="1000" loading="lazy" />
       <span class="piece-number" aria-hidden="true">${String(index + 1).padStart(2, '0')}</span>
       <span class="viewer-state" id="viewer-state-${index}">Interactive 3D</span>
-      <span class="object-turn-label" aria-hidden="true">DRAG TO TURN</span>
-    </div>
-    <div class="viewer-controls" role="group" aria-label="3D controls for ${title}">
-      <label class="turn-control"><span class="sr-only">Turn ${title}</span><input class="turn-range" type="range" min="-180" max="180" step="1" value="0" aria-valuetext="0 degrees" /></label>
-      <button class="model-control zoom-out" type="button" aria-label="Zoom out ${title}">−</button>
-      <button class="model-control zoom-in" type="button" aria-label="Zoom in ${title}">+</button>
-      <button class="model-control reset-model" type="button" aria-label="Reset ${title} view">Reset</button>
+      <span class="object-turn-label" aria-hidden="true">MOVE TO TURN</span>
     </div>
     <button class="retry-3d" type="button" hidden>Retry 3D</button>
     <details class="piece-details"><summary><span class="piece-title">${title}<span class="piece-category">${escapeHtml(product.category)}</span></span><span class="detail-plus" aria-hidden="true">+</span></summary><div class="piece-description"><p>${escapeHtml(product.description)}</p><p class="piece-medium">${escapeHtml(product.material || 'Sculptural object')} · ${escapeHtml(String(product.year || '2026'))}</p></div></details>
@@ -97,7 +71,7 @@ async function loadCollection() {
     if (!Array.isArray(data) || data.length === 0) throw new Error('Collection unavailable');
     products = data.filter(product => product.title && product.model && product.stl);
     if (!products.length) throw new Error('Collection unavailable');
-    gallery3D = await (galleryPromise ||= import('./gallery-3d.js').then(({ createGallery3D }) => createGallery3D({ isPaused: () => paused, reduceMotion })));
+    gallery3D = await (galleryPromise ||= import('./gallery-3d.js').then(({ createGallery3D }) => createGallery3D({ reduceMotion })));
     controllers.forEach(controller => controller.dispose());
     controllers = [];
     grid.replaceChildren(...products.map(createPiece));
