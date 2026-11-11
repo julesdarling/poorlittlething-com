@@ -1,0 +1,344 @@
+import * as THREE from 'three';
+import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
+import { MeshoptDecoder } from 'three/addons/libs/meshopt_decoder.module.js';
+
+// One WebGL renderer serves every card. Each card receives a 2D copy of its
+// rendered scene, so the gallery never creates eighteen WebGL contexts.
+export function createGallery3D({ isPaused, reduceMotion }) {
+  const views = new Set();
+  const queue = [];
+  const loader = new GLTFLoader();
+  loader.setMeshoptDecoder(MeshoptDecoder);
+  let renderer;
+  let environment;
+  let contextLost = false;
+  let activeLoads = 0;
+  let previousTime = 0;
+  let lastFrame = 0;
+
+  try {
+    renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true, preserveDrawingBuffer: true, powerPreference: 'high-performance' });
+    renderer.setClearColor(0x000000, 0);
+    renderer.outputColorSpace = THREE.SRGBColorSpace;
+    renderer.toneMapping = THREE.NeutralToneMapping;
+    renderer.toneMappingExposure = .95;
+    renderer.shadowMap.enabled = true;
+    renderer.shadowMap.type = THREE.PCFShadowMap;
+    const pmrem = new THREE.PMREMGenerator(renderer);
+    const room = new RoomEnvironment();
+    environment = pmrem.fromScene(room, .04).texture;
+    room.dispose();
+    pmrem.dispose();
+    renderer.domElement.addEventListener('webglcontextlost', event => {
+      event.preventDefault();
+      contextLost = true;
+      views.forEach(view => fallback(view, 'Image preview. Restoring 3D…'));
+    });
+    renderer.domElement.addEventListener('webglcontextrestored', () => {
+      contextLost = false;
+      views.forEach(view => { view.dirty = true; });
+    });
+  } catch {
+    renderer = null;
+  }
+
+  function fallback(view, message = 'Image preview. 3D is unavailable.') {
+    view.stage.classList.remove('is-live');
+    view.status.textContent = message;
+    view.card.querySelectorAll('.viewer-controls button, .viewer-controls input').forEach(control => { control.disabled = true; });
+  }
+
+  function disposeScene(scene) {
+    const resources = new Set();
+    scene?.traverse(object => {
+      if (object.geometry) resources.add(object.geometry);
+      for (const material of Array.isArray(object.material) ? object.material : [object.material]) {
+        if (!material) continue;
+        resources.add(material);
+        for (const value of Object.values(material)) if (value?.isTexture && value !== environment) resources.add(value);
+      }
+      object.shadow?.dispose();
+    });
+    resources.forEach(resource => {
+      if (resource.isTexture) resource.image?.close?.();
+      resource.dispose();
+    });
+  }
+
+  function unload(view) {
+    disposeScene(view.scene);
+    view.scene = null;
+    view.root = null;
+    view.ready = false;
+    fallback(view, 'Interactive 3D');
+  }
+
+  function prune() {
+    const resident = [...views].filter(view => view.ready);
+    const candidates = resident.filter(view => !view.near).sort((a, b) => a.lastUsed - b.lastUsed);
+    while (resident.length > 6 && candidates.length) {
+      const view = candidates.shift();
+      unload(view);
+      resident.splice(resident.indexOf(view), 1);
+    }
+  }
+
+  function buildScene(view, model) {
+    const scene = new THREE.Scene();
+    scene.environment = environment;
+    scene.environmentIntensity = .45;
+    const root = new THREE.Group();
+    root.add(model);
+    scene.add(root);
+    model.traverse(object => {
+      if (!object.isMesh) return;
+      object.castShadow = true;
+      object.receiveShadow = false;
+    });
+    const bounds = new THREE.Box3().setFromObject(model);
+    const size = bounds.getSize(new THREE.Vector3());
+    const center = bounds.getCenter(new THREE.Vector3());
+    // Normalize presentation only. The downloadable STL is the original size.
+    const scale = Math.min(2.85 / Math.max(size.y, .000001), 3.5 / Math.max(Math.hypot(size.x, size.z), .000001));
+    model.position.add(new THREE.Vector3(-center.x, -bounds.min.y, -center.z));
+    root.scale.setScalar(scale);
+    // Match the common toy-world plate. Every card shares this exact camera;
+    // the object alone is fitted to the stage and rotated by the controls.
+    const target = new THREE.Vector3(0, 1.1706807, 0);
+    const camera = new THREE.PerspectiveCamera(24.19997, 1, .01, 100);
+    camera.position.set(0, 5.4706807, 8.4);
+    camera.lookAt(target);
+    const key = new THREE.DirectionalLight(0xfff8ef, 1.6);
+    key.position.set(-3, 10, 4.5);
+    key.castShadow = true;
+    key.shadow.mapSize.set(1024, 1024);
+    key.shadow.camera.left = key.shadow.camera.bottom = -4;
+    key.shadow.camera.right = key.shadow.camera.top = 4;
+    key.shadow.camera.near = .1;
+    key.shadow.camera.far = 20;
+    key.shadow.bias = -.0005;
+    key.shadow.normalBias = .02;
+    key.shadow.radius = 5;
+    scene.add(key);
+    const fill = new THREE.DirectionalLight(0xedf4ff, .55);
+    fill.position.set(4, 2.5, 4);
+    scene.add(fill);
+    const rim = new THREE.DirectionalLight(0xffffff, .7);
+    rim.position.set(2, 6, -5);
+    scene.add(rim, new THREE.HemisphereLight(0xfff9f0, 0xe0d5c4, .45));
+    const floor = new THREE.Mesh(new THREE.PlaneGeometry(20, 20), new THREE.ShadowMaterial({ opacity: .16, depthWrite: false }));
+    floor.rotation.x = -Math.PI / 2;
+    floor.position.y = -.012;
+    floor.receiveShadow = true;
+    scene.add(floor);
+    Object.assign(view, { scene, root, camera, baseScale: scale, ready: true, dirty: true });
+    view.card.querySelectorAll('.viewer-controls button, .viewer-controls input').forEach(control => { control.disabled = false; });
+    view.lastUsed = performance.now();
+    applyPose(view);
+  }
+
+  async function pump() {
+    while (renderer && !contextLost && activeLoads < 2 && queue.length) {
+      const view = queue.shift();
+      view.queued = false;
+      if (view.disposed || !view.near || view.ready || view.loading) continue;
+      activeLoads++;
+      view.loading = true;
+      view.status.textContent = 'Loading 3D…';
+      loader.loadAsync(view.product.model).then(gltf => {
+        if (view.disposed) { disposeScene(gltf.scene); return; }
+        buildScene(view, gltf.scene);
+        view.failed = false;
+        prune();
+      }).catch(() => {
+        if (!view.disposed) {
+          view.failed = true;
+          fallback(view, 'Image preview. Select Retry 3D.');
+          view.retry.hidden = false;
+        }
+      }).finally(() => {
+        view.loading = false;
+        activeLoads--;
+        pump();
+      });
+    }
+  }
+
+  function requestLoad(view) {
+    if (!renderer || contextLost || view.ready || view.loading || view.queued || view.disposed) return;
+    if (!view.platePromise) {
+      view.plate.loading = 'eager';
+      view.platePromise = view.plate.decode().then(() => { view.plateReady = true; view.dirty = true; }).catch(() => {
+        view.plateReady = false;
+        fallback(view, 'Image preview. Scene background unavailable.');
+      });
+    }
+    view.queued = true;
+    queue.push(view);
+    pump();
+  }
+
+  function applyPose(view) {
+    if (!view.root) return;
+    view.root.rotation.y = view.angle;
+    view.root.scale.setScalar(view.baseScale * view.zoom);
+    view.dirty = true;
+    view.range.value = String(Math.round(THREE.MathUtils.radToDeg(view.angle)));
+    view.range.setAttribute('aria-valuetext', `${Math.round(THREE.MathUtils.radToDeg(view.angle))} degrees`);
+  }
+
+  function interact(view) {
+    view.interactionUntil = performance.now() + 7000;
+    if (!view.ready && !view.failed) { view.near = true; requestLoad(view); }
+  }
+
+  function add(card, product) {
+    const stage = card.querySelector('.object-stage');
+    const canvas = document.createElement('canvas');
+    canvas.className = 'scene-canvas';
+    canvas.setAttribute('aria-hidden', 'true');
+    canvas.dataset.renderer = 'three-shared-webgl';
+    stage.append(canvas);
+    const view = {
+      card, product, stage, canvas, ctx: canvas.getContext('2d'),
+      plate: stage.querySelector('.viewer-background'), plateReady: false,
+      range: card.querySelector('.turn-range'), status: card.querySelector('.viewer-state'),
+      retry: card.querySelector('.retry-3d'), angle: 0, zoom: 1, direction: 1,
+      near: false, ready: false, loading: false, dirty: true, queued: false,
+      interactionUntil: 0, lastUsed: 0, pointer: null
+    };
+    views.add(view);
+    view.card.querySelectorAll('.viewer-controls button, .viewer-controls input').forEach(control => { control.disabled = true; });
+    if (!renderer || !view.ctx) {
+      fallback(view);
+      stage.tabIndex = -1;
+      stage.setAttribute('aria-label', `${product.title}, image preview`);
+    }
+    function turn(angle) {
+      interact(view);
+      view.angle = THREE.MathUtils.clamp(angle, -Math.PI, Math.PI);
+      applyPose(view);
+    }
+    function zoomBy(delta) {
+      interact(view);
+      view.zoom = THREE.MathUtils.clamp(view.zoom + delta, .7, 1.45);
+      applyPose(view);
+    }
+    function reset() {
+      interact(view);
+      view.angle = 0;
+      view.zoom = 1;
+      view.direction = 1;
+      applyPose(view);
+    }
+    view.range.addEventListener('input', () => turn(THREE.MathUtils.degToRad(Number(view.range.value))));
+    card.querySelector('.zoom-out').addEventListener('click', () => zoomBy(-.1));
+    card.querySelector('.zoom-in').addEventListener('click', () => zoomBy(.1));
+    card.querySelector('.reset-model').addEventListener('click', reset);
+    view.retry.addEventListener('click', () => {
+      view.failed = false;
+      view.retry.hidden = true;
+      view.near = true;
+      requestLoad(view);
+    });
+    stage.addEventListener('keydown', event => {
+      if (event.key === 'ArrowLeft') turn(view.angle - Math.PI / 12);
+      else if (event.key === 'ArrowRight') turn(view.angle + Math.PI / 12);
+      else if (event.key === '+' || event.key === '=') zoomBy(.1);
+      else if (event.key === '-') zoomBy(-.1);
+      else if (event.key === '0' || event.key === 'Home') reset();
+      else return;
+      event.preventDefault();
+    });
+    stage.addEventListener('dblclick', reset);
+    stage.addEventListener('pointerdown', event => {
+      if (event.button !== 0 || !event.isPrimary) return;
+      interact(view);
+      view.pointer = { id: event.pointerId, x: event.clientX, y: event.clientY, angle: view.angle, dragging: event.pointerType === 'mouse' };
+      if (event.pointerType === 'mouse') {
+        stage.setPointerCapture(event.pointerId);
+        stage.focus({ preventScroll: true });
+        event.preventDefault();
+      }
+    });
+    stage.addEventListener('pointermove', event => {
+      const pointer = view.pointer;
+      if (!pointer || pointer.id !== event.pointerId) return;
+      const dx = event.clientX - pointer.x;
+      const dy = event.clientY - pointer.y;
+      if (!pointer.dragging && Math.abs(dx) > 8 && Math.abs(dx) > Math.abs(dy) * 1.2) {
+        pointer.dragging = true;
+        stage.setPointerCapture(event.pointerId);
+      }
+      if (!pointer.dragging) return;
+      stage.classList.add('is-dragging');
+      turn(pointer.angle + dx / stage.clientWidth * Math.PI * 2);
+    });
+    function release(event) {
+      if (view.pointer?.id !== event.pointerId) return;
+      view.pointer = null;
+      stage.classList.remove('is-dragging');
+      if (stage.hasPointerCapture(event.pointerId)) stage.releasePointerCapture(event.pointerId);
+      view.interactionUntil = performance.now() + 7000;
+    }
+    stage.addEventListener('pointerup', release);
+    stage.addEventListener('pointercancel', release);
+    return {
+      card,
+      setVisible(value) {
+        view.near = value;
+        if (value && !view.failed) requestLoad(view);
+        else prune();
+      },
+      refresh() { view.dirty = true; },
+      dispose() {
+        view.disposed = true;
+        views.delete(view);
+        disposeScene(view.scene);
+      }
+    };
+  }
+
+  function frame(time) {
+    requestAnimationFrame(frame);
+    if (time - lastFrame < 32 || document.hidden || !renderer || contextLost) return;
+    const delta = Math.min((time - previousTime) / 1000, .05);
+    previousTime = time;
+    lastFrame = time;
+    for (const view of views) {
+      if (!view.ready || !view.plateReady || view.card.hidden) continue;
+      const rect = view.stage.getBoundingClientRect();
+      if (rect.bottom <= 0 || rect.top >= window.innerHeight || rect.right <= 0 || rect.left >= window.innerWidth || rect.width <= 0) continue;
+      view.lastUsed = time;
+      if (!isPaused() && !view.pointer && !view.card.contains(document.activeElement) && time > view.interactionUntil) {
+        if (view.angle >= Math.PI / 2) view.direction = -1;
+        if (view.angle <= -Math.PI / 2) view.direction = 1;
+        view.angle += delta * .22 * view.direction;
+        applyPose(view);
+      }
+      const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
+      const size = Math.max(1, Math.min(800, Math.round(rect.width * dpr)));
+      if (view.canvas.width !== size || view.canvas.height !== size) {
+        view.canvas.width = view.canvas.height = size;
+        view.dirty = true;
+      }
+      if (!view.dirty) continue;
+      try {
+        if (renderer.domElement.width !== size || renderer.domElement.height !== size) renderer.setSize(size, size, false);
+        renderer.setViewport(0, 0, size, size);
+        renderer.render(view.scene, view.camera);
+        view.ctx.globalCompositeOperation = 'copy';
+        view.ctx.drawImage(renderer.domElement, 0, 0);
+        view.stage.classList.add('is-live');
+        view.status.textContent = 'Live 3D';
+        view.card.querySelectorAll('.viewer-controls button, .viewer-controls input').forEach(control => { control.disabled = false; });
+        view.dirty = false;
+      } catch {
+        fallback(view);
+      }
+    }
+  }
+  requestAnimationFrame(frame);
+  return { add };
+}

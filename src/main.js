@@ -15,6 +15,8 @@ let activeFilter = 'All';
 let controllers = [];
 let intersectionObserver;
 let motionContext;
+let gallery3D;
+let galleryPromise;
 
 document.querySelector('#year').textContent = new Date().getFullYear();
 
@@ -38,73 +40,27 @@ function createPiece(product, index) {
   const card = document.createElement('article');
   card.className = 'product-card';
   card.dataset.category = product.category;
-  const key = `piece-${index}`;
+  const title = escapeHtml(product.title);
+  const downloadSize = Number.isFinite(product.stlBytes) && product.stlBytes > 0 ? ` · ${(product.stlBytes / 1_000_000).toFixed(1)} MB` : '';
   card.innerHTML = `
-    <div class="object-stage" aria-label="${escapeHtml(product.title)}, four views across 180 degrees">
+    <div class="object-stage" tabindex="0" role="img" aria-label="Interactive 3D ${title}. Drag left or right to turn. Use left and right arrow keys to turn, plus and minus to zoom, and zero to reset." aria-describedby="viewer-help viewer-state-${index}">
+      <img class="viewer-background" src="${escapeHtml(product.background || '/assets/toy-world.webp')}" alt="" aria-hidden="true" width="1000" height="1000" loading="lazy" />
+      <img class="object-poster" src="${escapeHtml(product.poster || product.views?.[0] || '')}" alt="${title}" width="1000" height="1000" loading="lazy" />
       <span class="piece-number" aria-hidden="true">${String(index + 1).padStart(2, '0')}</span>
-      ${product.views.map((view, i) => `<img ${i === 0 ? 'class="is-active"' : ''} data-src="${escapeHtml(view)}" alt="${i === 0 ? escapeHtml(product.title) : ''}" ${i !== 0 ? 'aria-hidden="true"' : ''} width="800" height="800" decoding="async" />`).join('')}
-      <span class="object-turn-label" aria-hidden="true">TURN ME</span>
+      <span class="viewer-state" id="viewer-state-${index}">Interactive 3D</span>
+      <span class="object-turn-label" aria-hidden="true">DRAG TO TURN</span>
     </div>
-    <div class="view-controls">
-      <button class="view-arrow view-prev" type="button" aria-label="Previous view of ${escapeHtml(product.title)}">←</button>
-      <input class="view-range" type="range" min="0" max="3" step="1" value="0" aria-label="Rotate ${escapeHtml(product.title)}" aria-valuetext="View 1 of 4" />
-      <button class="view-arrow view-next" type="button" aria-label="Next view of ${escapeHtml(product.title)}">→</button>
-      <span class="view-caption" aria-hidden="true">180°</span>
+    <div class="viewer-controls" role="group" aria-label="3D controls for ${title}">
+      <label class="turn-control"><span class="sr-only">Turn ${title}</span><input class="turn-range" type="range" min="-180" max="180" step="1" value="0" aria-valuetext="0 degrees" /></label>
+      <button class="model-control zoom-out" type="button" aria-label="Zoom out ${title}">−</button>
+      <button class="model-control zoom-in" type="button" aria-label="Zoom in ${title}">+</button>
+      <button class="model-control reset-model" type="button" aria-label="Reset ${title} view">Reset</button>
     </div>
-    <details class="piece-details"><summary><span class="piece-title">${escapeHtml(product.title)}<span class="piece-category">${escapeHtml(product.category)}</span></span><span class="detail-plus" aria-hidden="true">+</span></summary><div class="piece-description"><p>${escapeHtml(product.description)}</p><p class="piece-medium">${escapeHtml(product.material || 'Sculptural object')} · ${escapeHtml(String(product.year || '2026'))}</p></div></details>`;
-  const stage = card.querySelector('.object-stage');
-  const images = [...stage.querySelectorAll('img')];
-  const range = card.querySelector('.view-range');
-  let view = 0;
-  let direction = 1;
-  let inView = false;
-  let hovered = false;
-  let interactionUntil = 0;
-  let loaded = false;
-  let autoTick = index % 4;
-
-  function loadImages() {
-    if (loaded) return;
-    loaded = true;
-    images.forEach((image, i) => {
-      image.src = image.dataset.src;
-      if (i !== 0) image.fetchPriority = 'low';
-    });
-  }
-  function show(next, fromUser = false) {
-    next = Math.max(0, Math.min(3, Math.round(next)));
-    if (fromUser) interactionUntil = performance.now() + 5000;
-    if (view === next) return;
-    images[view].classList.remove('is-active');
-    images[next].classList.add('is-active');
-    view = next;
-    range.value = String(view);
-    range.setAttribute('aria-valuetext', `View ${view + 1} of 4`);
-  }
-  range.addEventListener('input', () => { loadImages(); show(Number(range.value), true); });
-  card.querySelector('.view-prev').addEventListener('click', () => { loadImages(); show((view + 3) % 4, true); });
-  card.querySelector('.view-next').addEventListener('click', () => { loadImages(); show((view + 1) % 4, true); });
-  stage.addEventListener('pointerenter', event => { if (event.pointerType === 'mouse') hovered = true; });
-  stage.addEventListener('pointermove', event => {
-    if (event.pointerType !== 'mouse') return;
-    loadImages();
-    const bounds = stage.getBoundingClientRect();
-    show(Math.min(3, Math.floor(((event.clientX - bounds.left) / bounds.width) * 4)), true);
-  });
-  stage.addEventListener('pointerleave', () => { hovered = false; interactionUntil = performance.now() + 2000; });
+    <button class="retry-3d" type="button" hidden>Retry 3D</button>
+    <details class="piece-details"><summary><span class="piece-title">${title}<span class="piece-category">${escapeHtml(product.category)}</span></span><span class="detail-plus" aria-hidden="true">+</span></summary><div class="piece-description"><p>${escapeHtml(product.description)}</p><p class="piece-medium">${escapeHtml(product.material || 'Sculptural object')} · ${escapeHtml(String(product.year || '2026'))}</p></div></details>
+    <a class="stl-download" href="${escapeHtml(product.stl)}" download="poor-little-thing-${escapeHtml(product.id)}-assembly-mm.stl" aria-label="Download ${title} assembly STL in millimeters${downloadSize}">Download assembly STL<span>STL · mm${downloadSize}</span></a>`;
   card.querySelector('details').addEventListener('toggle', () => ScrollTrigger.refresh());
-  const controller = {
-    card,
-    setVisible(value) { inView = value; if (value) loadImages(); },
-    tick() {
-      if (paused || document.hidden || !inView || card.hidden || hovered || card.contains(document.activeElement) || performance.now() < interactionUntil) return;
-      autoTick++;
-      if (autoTick % 2 !== 0) return;
-      if (view === 3) direction = -1;
-      if (view === 0) direction = 1;
-      show(view + direction);
-    }
-  };
+  const controller = gallery3D.add(card, product);
   controllers.push(controller);
   card._pieceController = controller;
   return card;
@@ -135,11 +91,14 @@ async function loadCollection() {
   grid.setAttribute('aria-busy', 'true');
   document.querySelector('#collection-error').hidden = true;
   try {
-    const response = await fetch('/products.json');
+    const response = await fetch('/products.json', { cache: 'no-cache' });
     if (!response.ok) throw new Error('Collection unavailable');
     const data = await response.json();
     if (!Array.isArray(data) || data.length === 0) throw new Error('Collection unavailable');
-    products = data.filter(product => product.title && product.views?.length === 4);
+    products = data.filter(product => product.title && product.model && product.stl);
+    if (!products.length) throw new Error('Collection unavailable');
+    gallery3D = await (galleryPromise ||= import('./gallery-3d.js').then(({ createGallery3D }) => createGallery3D({ isPaused: () => paused, reduceMotion })));
+    controllers.forEach(controller => controller.dispose());
     controllers = [];
     grid.replaceChildren(...products.map(createPiece));
     document.querySelector('#total-count').textContent = String(products.length).padStart(2, '0');
@@ -183,6 +142,5 @@ function setupProductMotion() {
   ScrollTrigger.refresh();
 }
 
-window.setInterval(() => controllers.forEach(controller => controller.tick()), 650);
 document.fonts.ready.then(() => ScrollTrigger.refresh());
 loadCollection();

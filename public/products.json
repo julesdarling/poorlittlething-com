@@ -4,359 +4,377 @@
     "title": "Rope Saw",
     "category": "Objects",
     "description": "A familiar silhouette, with a very different story.",
-    "views": [
-      "/assets/products/rope-saw/01.webp",
-      "/assets/products/rope-saw/02.webp",
-      "/assets/products/rope-saw/03.webp",
-      "/assets/products/rope-saw/04.webp"
-    ],
-    "angleDegrees": [
-      -90,
-      -30,
-      30,
-      90
-    ],
     "material": "3D printed sculpture",
-    "year": "2026"
+    "year": "2026",
+    "model": "/assets/models/rope-saw.glb?v=6700925b98be",
+    "stl": "/downloads/rope-saw-assembly-mm.stl?v=7859aba9b17e",
+    "poster": "/assets/products/rope-saw/01.webp?v=6598a87206f8",
+    "background": "/assets/toy-world.webp?v=e516d7a943ae",
+    "modelBytes": 13605376,
+    "stlBytes": 20740684,
+    "modelRotation": [
+      0,
+      0,
+      0
+    ],
+    "stlUnits": "mm",
+    "stlScope": "assembly"
   },
   {
     "id": "palm-star",
     "title": "Palm Star",
     "category": "Objects",
     "description": "A little star with a less innocent side.",
-    "views": [
-      "/assets/products/palm-star/01.webp",
-      "/assets/products/palm-star/02.webp",
-      "/assets/products/palm-star/03.webp",
-      "/assets/products/palm-star/04.webp"
-    ],
-    "angleDegrees": [
-      -90,
-      -30,
-      30,
-      90
-    ],
     "material": "3D printed sculpture",
-    "year": "2026"
+    "year": "2026",
+    "model": "/assets/models/palm-star.glb?v=8e3aafee4ab5",
+    "stl": "/downloads/palm-star-assembly-mm.stl?v=25af91e0cc89",
+    "poster": "/assets/products/palm-star/01.webp?v=579534bda1f1",
+    "background": "/assets/toy-world.webp?v=e516d7a943ae",
+    "modelBytes": 306124,
+    "stlBytes": 1289284,
+    "modelRotation": [
+      0,
+      0,
+      0
+    ],
+    "stlUnits": "mm",
+    "stlScope": "assembly"
   },
   {
     "id": "little-c",
     "title": "Little C",
     "category": "Objects",
     "description": "A bright, small study in pressure and possibility.",
-    "views": [
-      "/assets/products/little-c/01.webp",
-      "/assets/products/little-c/02.webp",
-      "/assets/products/little-c/03.webp",
-      "/assets/products/little-c/04.webp"
-    ],
-    "angleDegrees": [
-      -90,
-      -30,
-      30,
-      90
-    ],
     "material": "3D printed sculpture",
-    "year": "2026"
+    "year": "2026",
+    "model": "/assets/models/little-c.glb?v=6bc47f4ff6b7",
+    "stl": "/downloads/little-c-assembly-mm.stl?v=b49b386323f3",
+    "poster": "/assets/products/little-c/01.webp?v=33c466b1ede2",
+    "background": "/assets/toy-world.webp?v=e516d7a943ae",
+    "modelBytes": 432384,
+    "stlBytes": 1419084,
+    "modelRotation": [
+      0,
+      0,
+      0
+    ],
+    "stlUnits": "mm",
+    "stlScope": "assembly"
   },
   {
     "id": "talon",
     "title": "Talon",
     "category": "Objects",
     "description": "A single sweeping curve. A bold little gesture.",
-    "views": [
-      "/assets/products/talon/01.webp",
-      "/assets/products/talon/02.webp",
-      "/assets/products/talon/03.webp",
-      "/assets/products/talon/04.webp"
-    ],
-    "angleDegrees": [
-      -90,
-      -30,
-      30,
-      90
-    ],
     "material": "3D printed sculpture",
-    "year": "2026"
+    "year": "2026",
+    "model": "/assets/models/talon.glb?v=32a162043a7c",
+    "stl": "/downloads/talon-assembly-mm.stl?v=102b96c31664",
+    "poster": "/assets/products/talon/01.webp?v=87fc9d2d4c6b",
+    "background": "/assets/toy-world.webp?v=e516d7a943ae",
+    "stlBytes": 3339384,
+    "modelBytes": 855876,
+    "modelRotation": [
+      0,
+      0,
+      0
+    ],
+    "stlUnits": "mm",
+    "stlScope": "assembly"
   },
   {
     "id": "trio",
     "title": "Trio",
     "category": "Objects",
     "description": "Three points, one playful proposition.",
-    "views": [
-      "/assets/products/trio/01.webp",
-      "/assets/products/trio/02.webp",
-      "/assets/products/trio/03.webp",
-      "/assets/products/trio/04.webp"
-    ],
-    "angleDegrees": [
-      -90,
-      -30,
-      30,
-      90
-    ],
     "material": "3D printed sculpture",
-    "year": "2026"
+    "year": "2026",
+    "model": "/assets/models/trio.glb?v=57f2f76262d6",
+    "stl": "/downloads/trio-assembly-mm.stl?v=d351e7a837ce",
+    "poster": "/assets/products/trio/01.webp?v=71475fdf068e",
+    "background": "/assets/toy-world.webp?v=e516d7a943ae",
+    "modelBytes": 1363720,
+    "stlBytes": 5867284,
+    "modelRotation": [
+      0,
+      0,
+      0
+    ],
+    "stlUnits": "mm",
+    "stlScope": "assembly"
   },
   {
     "id": "bramble",
     "title": "Bramble",
     "category": "Objects",
     "description": "A miniature crown of thorns in primary color.",
-    "views": [
-      "/assets/products/bramble/01.webp",
-      "/assets/products/bramble/02.webp",
-      "/assets/products/bramble/03.webp",
-      "/assets/products/bramble/04.webp"
-    ],
-    "angleDegrees": [
-      -90,
-      -30,
-      30,
-      90
-    ],
     "material": "3D printed sculpture",
-    "year": "2026"
+    "year": "2026",
+    "model": "/assets/models/bramble.glb?v=9637ab6d8e63",
+    "stl": "/downloads/bramble-assembly-mm.stl?v=868f29a5cdcf",
+    "poster": "/assets/products/bramble/01.webp?v=81067c30a718",
+    "background": "/assets/toy-world.webp?v=e516d7a943ae",
+    "modelBytes": 558480,
+    "stlBytes": 1752084,
+    "modelRotation": [
+      0,
+      0,
+      0
+    ],
+    "stlUnits": "mm",
+    "stlScope": "assembly"
   },
   {
     "id": "orbit",
     "title": "Orbit",
     "category": "Objects",
     "description": "A tactile landscape, wrapped around a small world.",
-    "views": [
-      "/assets/products/orbit/01.webp",
-      "/assets/products/orbit/02.webp",
-      "/assets/products/orbit/03.webp",
-      "/assets/products/orbit/04.webp"
-    ],
-    "angleDegrees": [
-      -90,
-      -30,
-      30,
-      90
-    ],
     "material": "3D printed sculpture",
-    "year": "2026"
+    "year": "2026",
+    "model": "/assets/models/orbit.glb?v=5e853925941f",
+    "stl": "/downloads/orbit-assembly-mm.stl?v=23b9ed96abc1",
+    "poster": "/assets/products/orbit/01.webp?v=6effe7c49b29",
+    "background": "/assets/toy-world.webp?v=e516d7a943ae",
+    "modelBytes": 1878236,
+    "stlBytes": 3087884,
+    "modelRotation": [
+      0,
+      0,
+      0
+    ],
+    "stlUnits": "mm",
+    "stlScope": "assembly"
   },
   {
     "id": "scallop",
     "title": "Scallop",
     "category": "Objects",
     "description": "A turning wheel of repeating peaks.",
-    "views": [
-      "/assets/products/scallop/01.webp",
-      "/assets/products/scallop/02.webp",
-      "/assets/products/scallop/03.webp",
-      "/assets/products/scallop/04.webp"
-    ],
-    "angleDegrees": [
-      -90,
-      -30,
-      30,
-      90
-    ],
     "material": "3D printed sculpture",
-    "year": "2026"
+    "year": "2026",
+    "model": "/assets/models/scallop.glb?v=0f14a88c379e",
+    "stl": "/downloads/scallop-assembly-mm.stl?v=edf79f6ad4b9",
+    "poster": "/assets/products/scallop/01.webp?v=365d9d32b551",
+    "background": "/assets/toy-world.webp?v=e516d7a943ae",
+    "modelBytes": 665160,
+    "stlBytes": 2263384,
+    "modelRotation": [
+      0,
+      0,
+      0
+    ],
+    "stlUnits": "mm",
+    "stlScope": "assembly"
   },
   {
     "id": "block-party",
     "title": "Block Party",
     "category": "Objects",
     "description": "Building-block confidence with a mischievous edge.",
-    "views": [
-      "/assets/products/block-party/01.webp",
-      "/assets/products/block-party/02.webp",
-      "/assets/products/block-party/03.webp",
-      "/assets/products/block-party/04.webp"
-    ],
-    "angleDegrees": [
-      -90,
-      -30,
-      30,
-      90
-    ],
     "material": "3D printed sculpture",
-    "year": "2026"
+    "year": "2026",
+    "model": "/assets/models/block-party.glb?v=e004f5b26bd3",
+    "stl": "/downloads/block-party-assembly-mm.stl?v=986c14bd9110",
+    "poster": "/assets/products/block-party/01.webp?v=4ff5be028978",
+    "background": "/assets/toy-world.webp?v=e516d7a943ae",
+    "modelBytes": 781900,
+    "stlBytes": 1879484,
+    "modelRotation": [
+      0,
+      0,
+      0
+    ],
+    "stlUnits": "mm",
+    "stlScope": "assembly"
   },
   {
     "id": "crank",
     "title": "Crank",
     "category": "Objects",
     "description": "A small machine for a very active imagination.",
-    "views": [
-      "/assets/products/crank/01.webp",
-      "/assets/products/crank/02.webp",
-      "/assets/products/crank/03.webp",
-      "/assets/products/crank/04.webp"
-    ],
-    "angleDegrees": [
-      -90,
-      -30,
-      30,
-      90
-    ],
     "material": "3D printed sculpture",
-    "year": "2026"
+    "year": "2026",
+    "model": "/assets/models/crank.glb?v=96ef43646c87",
+    "stl": "/downloads/crank-assembly-mm.stl?v=efc3994015d3",
+    "poster": "/assets/products/crank/01.webp?v=ec020910229f",
+    "background": "/assets/toy-world.webp?v=e516d7a943ae",
+    "modelBytes": 933900,
+    "stlBytes": 2727384,
+    "modelRotation": [
+      0,
+      0,
+      0
+    ],
+    "stlUnits": "mm",
+    "stlScope": "assembly"
   },
   {
     "id": "crescent",
     "title": "Crescent",
     "category": "Objects",
     "description": "Two arcs held in a delicate conversation.",
-    "views": [
-      "/assets/products/crescent/01.webp",
-      "/assets/products/crescent/02.webp",
-      "/assets/products/crescent/03.webp",
-      "/assets/products/crescent/04.webp"
-    ],
-    "angleDegrees": [
-      -90,
-      -30,
-      30,
-      90
-    ],
     "material": "3D printed sculpture",
-    "year": "2026"
+    "year": "2026",
+    "model": "/assets/models/crescent.glb?v=b609ddac6cb4",
+    "stl": "/downloads/crescent-assembly-mm.stl?v=ed9354300c4b",
+    "poster": "/assets/products/crescent/01.webp?v=905ae7a73e7f",
+    "background": "/assets/toy-world.webp?v=e516d7a943ae",
+    "modelBytes": 1194676,
+    "stlBytes": 4681384,
+    "modelRotation": [
+      0,
+      0,
+      0
+    ],
+    "stlUnits": "mm",
+    "stlScope": "assembly"
   },
   {
     "id": "alligator",
     "title": "Alligator",
     "category": "Objects",
     "description": "A toy-box grin, stretched into something stranger.",
-    "views": [
-      "/assets/products/alligator/01.webp",
-      "/assets/products/alligator/02.webp",
-      "/assets/products/alligator/03.webp",
-      "/assets/products/alligator/04.webp"
-    ],
-    "angleDegrees": [
-      -90,
-      -30,
-      30,
-      90
-    ],
     "material": "3D printed sculpture",
-    "year": "2026"
+    "year": "2026",
+    "model": "/assets/models/alligator.glb?v=6e953116f3c9",
+    "stl": "/downloads/alligator-assembly-mm.stl?v=3a63c5d8d314",
+    "poster": "/assets/products/alligator/01.webp?v=ae762b6a9c52",
+    "background": "/assets/toy-world.webp?v=e516d7a943ae",
+    "modelBytes": 363220,
+    "stlBytes": 1310884,
+    "modelRotation": [
+      0,
+      0,
+      0
+    ],
+    "stlUnits": "mm",
+    "stlScope": "assembly"
   },
   {
     "id": "tenderizer",
     "title": "Tenderizer",
     "category": "Objects",
     "description": "A playful silhouette with a prickly disposition.",
-    "views": [
-      "/assets/products/tenderizer/01.webp",
-      "/assets/products/tenderizer/02.webp",
-      "/assets/products/tenderizer/03.webp",
-      "/assets/products/tenderizer/04.webp"
-    ],
-    "angleDegrees": [
-      -90,
-      -30,
-      30,
-      90
-    ],
     "material": "3D printed sculpture",
-    "year": "2026"
+    "year": "2026",
+    "model": "/assets/models/tenderizer.glb?v=4229c4a1ac06",
+    "stl": "/downloads/tenderizer-assembly-mm.stl?v=672ed2d456c4",
+    "poster": "/assets/products/tenderizer/01.webp?v=a05c087b7a27",
+    "background": "/assets/toy-world.webp?v=e516d7a943ae",
+    "modelBytes": 4527268,
+    "stlBytes": 7433584,
+    "modelRotation": [
+      0,
+      0,
+      0
+    ],
+    "stlUnits": "mm",
+    "stlScope": "assembly"
   },
   {
     "id": "palm-heart",
     "title": "Palm Heart",
     "category": "Objects",
     "description": "Sweetness and sharpness, held in the same hand.",
-    "views": [
-      "/assets/products/palm-heart/01.webp",
-      "/assets/products/palm-heart/02.webp",
-      "/assets/products/palm-heart/03.webp",
-      "/assets/products/palm-heart/04.webp"
-    ],
-    "angleDegrees": [
-      -90,
-      -30,
-      30,
-      90
-    ],
     "material": "3D printed sculpture",
-    "year": "2026"
+    "year": "2026",
+    "model": "/assets/models/palm-heart.glb?v=1834c1a08bec",
+    "stl": "/downloads/palm-heart-assembly-mm.stl?v=e720687fd9be",
+    "poster": "/assets/products/palm-heart/01.webp?v=95f9553a3eda",
+    "background": "/assets/toy-world.webp?v=e516d7a943ae",
+    "modelBytes": 330652,
+    "stlBytes": 1508884,
+    "modelRotation": [
+      0,
+      0,
+      0
+    ],
+    "stlUnits": "mm",
+    "stlScope": "assembly"
   },
   {
     "id": "flame-collar",
     "title": "Flame Collar",
     "category": "Wearables",
     "description": "A small theater of fire, frame, and color.",
-    "views": [
-      "/assets/products/flame-collar/01.webp",
-      "/assets/products/flame-collar/02.webp",
-      "/assets/products/flame-collar/03.webp",
-      "/assets/products/flame-collar/04.webp"
-    ],
-    "angleDegrees": [
-      -90,
-      -30,
-      30,
-      90
-    ],
     "material": "3D printed sculpture",
-    "year": "2026"
+    "year": "2026",
+    "model": "/assets/models/flame-collar.glb?v=48544818e4aa",
+    "stl": "/downloads/flame-collar-assembly-mm.stl?v=d746b84c03fa",
+    "poster": "/assets/products/flame-collar/01.webp?v=16c62784ab7f",
+    "background": "/assets/toy-world.webp?v=e516d7a943ae",
+    "modelBytes": 8130128,
+    "stlBytes": 16112584,
+    "modelRotation": [
+      0,
+      0,
+      0
+    ],
+    "stlUnits": "mm",
+    "stlScope": "assembly"
   },
   {
     "id": "bunny-sweep",
     "title": "Bunny Sweep",
     "category": "Wearables",
     "description": "A familiar pair of ears, ready for another role.",
-    "views": [
-      "/assets/products/bunny-sweep/01.webp",
-      "/assets/products/bunny-sweep/02.webp",
-      "/assets/products/bunny-sweep/03.webp",
-      "/assets/products/bunny-sweep/04.webp"
-    ],
-    "angleDegrees": [
-      -90,
-      -30,
-      30,
-      90
-    ],
     "material": "3D printed sculpture",
-    "year": "2026"
+    "year": "2026",
+    "model": "/assets/models/bunny-sweep.glb?v=e3d710fe3982",
+    "stl": "/downloads/bunny-sweep-assembly-mm.stl?v=6176b1b3391d",
+    "poster": "/assets/products/bunny-sweep/01.webp?v=59c2a77f46e9",
+    "background": "/assets/toy-world.webp?v=e516d7a943ae",
+    "modelBytes": 3049040,
+    "stlBytes": 16425284,
+    "modelRotation": [
+      0,
+      0,
+      0
+    ],
+    "stlUnits": "mm",
+    "stlScope": "assembly"
   },
   {
     "id": "puppy-fold",
     "title": "Puppy Fold",
     "category": "Wearables",
     "description": "Soft curves, bright color, a change of character.",
-    "views": [
-      "/assets/products/puppy-fold/01.webp",
-      "/assets/products/puppy-fold/02.webp",
-      "/assets/products/puppy-fold/03.webp",
-      "/assets/products/puppy-fold/04.webp"
-    ],
-    "angleDegrees": [
-      -90,
-      -30,
-      30,
-      90
-    ],
     "material": "3D printed sculpture",
-    "year": "2026"
+    "year": "2026",
+    "model": "/assets/models/puppy-fold.glb?v=1d16cc877a97",
+    "stl": "/downloads/puppy-fold-assembly-mm.stl?v=23b8356b8900",
+    "poster": "/assets/products/puppy-fold/01.webp?v=a5374e0b00c8",
+    "background": "/assets/toy-world.webp?v=e516d7a943ae",
+    "modelBytes": 3064916,
+    "stlBytes": 16432584,
+    "modelRotation": [
+      0,
+      0,
+      0
+    ],
+    "stlUnits": "mm",
+    "stlScope": "assembly"
   },
   {
     "id": "tall-sweep",
     "title": "Tall Sweep",
     "category": "Wearables",
     "description": "A tall, curious silhouette for an imagined self.",
-    "views": [
-      "/assets/products/tall-sweep/01.webp",
-      "/assets/products/tall-sweep/02.webp",
-      "/assets/products/tall-sweep/03.webp",
-      "/assets/products/tall-sweep/04.webp"
-    ],
-    "angleDegrees": [
-      -90,
-      -30,
-      30,
-      90
-    ],
     "material": "3D printed sculpture",
-    "year": "2026"
+    "year": "2026",
+    "model": "/assets/models/tall-sweep.glb?v=fc626017913f",
+    "stl": "/downloads/tall-sweep-assembly-mm.stl?v=75d1b74be856",
+    "poster": "/assets/products/tall-sweep/01.webp?v=b0c25f176884",
+    "background": "/assets/toy-world.webp?v=e516d7a943ae",
+    "modelBytes": 2788860,
+    "stlBytes": 14939584,
+    "modelRotation": [
+      0,
+      0,
+      0
+    ],
+    "stlUnits": "mm",
+    "stlScope": "assembly"
   }
 ]
