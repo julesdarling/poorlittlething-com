@@ -3,6 +3,47 @@ import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
 import { MeshoptDecoder } from 'three/addons/libs/meshopt_decoder.module.js';
 
+// Optional pivots are measured in the GLB's original X/Z coordinates.
+// Keep the default pose in place while turning around that measured axis.
+export function getTurntablePresentation(model, product, camera) {
+  const bounds = new THREE.Box3().setFromObject(model);
+  const size = bounds.getSize(new THREE.Vector3());
+  const center = bounds.getCenter(new THREE.Vector3());
+  let scale = Math.min(2.85 / Math.max(size.y, .000001), 3.5 / Math.max(Math.hypot(size.x, size.z), .000001));
+  const pivot = product.rotationPivot;
+  if (!Array.isArray(pivot) || pivot.length !== 2 || !pivot.every(Number.isFinite)) {
+    return { scale, offset: new THREE.Vector3(-center.x, -bounds.min.y, -center.z), position: new THREE.Vector3() };
+  }
+  let radius = 0;
+  const point = new THREE.Vector3();
+  model.traverse(object => {
+    if (!object.isMesh) return;
+    const positions = object.geometry.getAttribute('position');
+    for (let index = 0; index < positions.count; index++) {
+      point.fromBufferAttribute(positions, index).applyMatrix4(object.matrixWorld);
+      radius = Math.max(radius, Math.hypot(point.x - pivot[0], point.z - pivot[1]));
+    }
+  });
+  const shift = new THREE.Vector3(pivot[0] - center.x, 0, pivot[1] - center.z);
+  scale = Math.min(scale, 3.5 / Math.max(2 * radius, .000001));
+  // Fit the complete cylinder swept around the true axis. This continuous
+  // bound covers every angle, including intermediate pointer positions.
+  camera.updateMatrixWorld(true);
+  const projection = new THREE.Matrix4().multiplyMatrices(camera.projectionMatrix, camera.matrixWorldInverse);
+  const frustum = new THREE.Frustum().setFromProjectionMatrix(projection);
+  for (const plane of frustum.planes) {
+    const n = plane.normal;
+    const extent = n.x * shift.x + n.z * shift.z + Math.min(0, n.y * size.y) - radius * Math.hypot(n.x, n.z);
+    if (extent < 0) scale = Math.min(scale, plane.constant / -extent * .97);
+  }
+  return {
+    scale,
+    offset: new THREE.Vector3(-pivot[0], -bounds.min.y, -pivot[1]),
+    position: shift.multiplyScalar(scale),
+    sweptRadius: radius,
+  };
+}
+
 // One WebGL renderer serves every card. Each card receives a 2D copy of its
 // rendered scene, so the gallery never creates eighteen WebGL contexts.
 export function createGallery3D({ reduceMotion }) {
@@ -117,19 +158,17 @@ export function createGallery3D({ reduceMotion }) {
       object.castShadow = true;
       object.receiveShadow = false;
     });
-    const bounds = new THREE.Box3().setFromObject(model);
-    const size = bounds.getSize(new THREE.Vector3());
-    const center = bounds.getCenter(new THREE.Vector3());
-    // Normalize presentation only. The downloadable STL is the original size.
-    const scale = Math.min(2.85 / Math.max(size.y, .000001), 3.5 / Math.max(Math.hypot(size.x, size.z), .000001));
-    model.position.add(new THREE.Vector3(-center.x, -bounds.min.y, -center.z));
-    root.scale.setScalar(scale);
-    // Match the common toy-world plate. Every card shares this exact camera;
-    // the object alone is fitted to the stage and rotated by pointer movement.
+    // Match the common toy-world plate. The camera remains fixed while only
+    // the object is fitted and rotated by pointer movement.
     const target = new THREE.Vector3(0, 1.1706807, 0);
     const camera = new THREE.PerspectiveCamera(24.19997, 1, .01, 100);
     camera.position.set(0, 5.4706807, 8.4);
     camera.lookAt(target);
+    const presentation = getTurntablePresentation(model, view.product, camera);
+    const scale = presentation.scale;
+    model.position.add(presentation.offset);
+    root.position.copy(presentation.position);
+    root.scale.setScalar(scale);
     const key = new THREE.DirectionalLight(0xfff8ef, 1.6);
     key.position.set(-3, 10, 4.5);
     key.castShadow = true;

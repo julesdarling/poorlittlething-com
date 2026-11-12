@@ -33,7 +33,11 @@
       0
     ],
     "stlUnits": "mm",
-    "stlScope": "assembly"
+    "stlScope": "assembly",
+    "rotationPivot": [
+      -0.13865159737058194,
+      0.008113906663183193
+    ]
   },
   {
     "id": "little-c",
@@ -249,7 +253,11 @@
       0
     ],
     "stlUnits": "mm",
-    "stlScope": "assembly"
+    "stlScope": "assembly",
+    "rotationPivot": [
+      0.09224562934470255,
+      0.17283855995691622
+    ]
   },
   {
     "id": "flame-collar",

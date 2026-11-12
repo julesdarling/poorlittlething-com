@@ -31,6 +31,8 @@ The production website is generated in `dist/`. The GitHub Actions workflow buil
 
 The gallery uses one shared WebGL renderer with local canvas copies, avoiding a separate WebGL context for every piece. Models load near the viewport, and GPU resources are released as distant pieces leave the active set. Only the featured model rotates; its camera, lights, and background stay fixed. Models stay still at rest and respond to pointer movement. Reduced motion preferences remove the short interpolation between pointer positions.
 
+Palm Star and Palm Heart use measured `rotationPivot` coordinates around their base and handle axes. Their default poses stay unchanged, and the viewer fits the full swept radius to keep the pieces inside the frame.
+
 Move the mouse across a model to turn it through 180°. On touch, swipe horizontally; vertical page scrolling remains available. Each model exposes an accessible horizontal slider with its actual angle from −90° to +90°. When it has keyboard focus, Left and Right turn it, Home selects −90°, End selects +90°, and zero resets it. Screen readers receive the current rendered angle. Image fallbacks expose a non-focusable preview instead of slider controls. There are no visible rotation controls. Posters and STL links remain available when WebGL cannot run. STL downloads contain the displayed assembly at its source scale; they are not a prepared print layout. The site has no checkout, visitor accounts, analytics, or form backend.
 
 ## Domain

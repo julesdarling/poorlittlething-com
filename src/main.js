@@ -91,7 +91,6 @@ media.add('(prefers-reduced-motion: no-preference)', () => {
     .from('.hero-aside', { y: 15, opacity: 0 }, .35)
     .from('.hero-image', { scale: 1.045, duration: 1.4 }, .2);
   gsap.to('.hero-image', { yPercent: 5, ease: 'none', scrollTrigger: { trigger: '.hero-image-wrap', start: 'top top', end: 'bottom top', scrub: true } });
-  gsap.from('.section-intro h2, .section-intro p', { y: 35, opacity: 0, stagger: .12, duration: .9, ease: 'power3.out', scrollTrigger: { trigger: '.section-intro', start: 'top 88%', once: true } });
   gsap.from('.idea h2', { x: -45, duration: 1.1, ease: 'power3.out', scrollTrigger: { trigger: '.idea', start: 'top 75%', once: true } });
   gsap.to('.idea-shift', { xPercent: -5, ease: 'none', scrollTrigger: { trigger: '.idea', start: 'top bottom', end: 'bottom top', scrub: 1 } });
   gsap.to('.idea-spark', { rotation: 150, ease: 'none', scrollTrigger: { trigger: '.idea', start: 'top bottom', end: 'bottom top', scrub: 1 } });
