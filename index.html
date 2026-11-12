@@ -16,7 +16,7 @@
     <meta property="og:image:height" content="675" />
     <meta name="twitter:card" content="summary_large_image" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-    <link rel="preload" as="image" href="/assets/hero.webp" />
+    <link rel="preload" as="image" href="/assets/hero.webp?v=8f9e0fbf87d2" />
     <script type="module" src="/src/main.js"></script>
   </head>
   <body>
@@ -32,15 +32,15 @@
           <div class="hero-aside"><p>Torture devices.<br />For the young at heart.</p></div>
         </div>
         <figure class="hero-figure">
-          <div class="hero-image-wrap"><img class="hero-image" src="/assets/hero.webp" alt="A red, yellow, and blue Poor Little Thing rope saw in a brightly colored world of stacking rings, building blocks, and make-believe." width="1672" height="941" fetchpriority="high" /></div>
+          <div class="hero-image-wrap"><img class="hero-image" src="/assets/hero.webp?v=8f9e0fbf87d2" alt="A red, yellow, and blue Poor Little Thing rope saw in a brightly colored world of stacking rings, building blocks, and make-believe." width="1671" height="941" fetchpriority="high" /></div>
         </figure>
       </section>
 
       <section class="collection" id="collection" aria-labelledby="collection-title">
         <h2 class="sr-only" id="collection-title">The collection</h2>
         <div class="collection-toolbar"><div class="filters" role="group" aria-label="Filter collection"><button class="filter active" type="button" data-filter="All" aria-pressed="true">All pieces <span id="total-count"></span></button><button class="filter" type="button" data-filter="Toys" aria-pressed="false">Toys</button><button class="filter" type="button" data-filter="Apparel" aria-pressed="false">Apparel</button></div></div>
-        <p class="view-hint" id="viewer-help">Move your mouse across a piece to turn it. On touch, swipe sideways.</p>
-        <p class="sr-only" id="viewer-keyboard-help">Use Left and Right to turn. Home shows the leftmost view, End shows the rightmost view, and 0 resets the piece.</p>
+        <p class="view-hint" id="viewer-help">Move your mouse across a piece for a full turn. On touch, swipe sideways.</p>
+        <p class="sr-only" id="viewer-keyboard-help">Use Left and Right to turn. Home selects −180 degrees, End selects 180 degrees, and 0 resets the piece. Keyboard focus pauses automatic rotation.</p>
         <p class="sr-only" role="status" id="collection-status" aria-live="polite"></p>
         <div class="product-grid" id="product-grid" aria-busy="true"></div>
         <p class="collection-error" id="collection-error" hidden>The collection couldn’t load. <button id="retry-collection" type="button">Try again</button>, or <a href="mailto:inquiry@poorlittlething.com">say hello</a>.</p>

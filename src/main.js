@@ -20,16 +20,17 @@ function createPiece(product, index) {
   card.className = 'product-card';
   card.dataset.category = product.category;
   const title = escapeHtml(product.title);
-  const downloadSize = Number.isFinite(product.stlBytes) && product.stlBytes > 0 ? ` · ${(product.stlBytes / 1_000_000).toFixed(1)} MB` : '';
+  const downloadSize = Number.isFinite(product.stlBytes) && product.stlBytes > 0 ? ` ${(product.stlBytes / 1_000_000).toFixed(1)} MB` : '';
   card.innerHTML = `
-    <div class="object-stage" tabindex="0" role="slider" aria-label="Turn ${title}" aria-valuemin="-90" aria-valuemax="90" aria-valuenow="0" aria-valuetext="0 degrees" aria-orientation="horizontal" aria-describedby="viewer-help viewer-keyboard-help viewer-state-${index}">
-      <img class="viewer-background" src="${escapeHtml(product.background || '/assets/toy-world.webp')}" alt="" aria-hidden="true" width="1000" height="1000" loading="lazy" />
+    <div class="object-stage" tabindex="0" role="slider" aria-label="Turn ${title}" aria-valuemin="-180" aria-valuemax="180" aria-valuenow="0" aria-valuetext="0 degrees" aria-orientation="horizontal" aria-describedby="viewer-help viewer-keyboard-help viewer-state-${index}">
+      <img class="viewer-background" src="${escapeHtml(product.background || '/assets/backgrounds/supplied-scene-01.png?v=ebdb635a0c8b')}" alt="" aria-hidden="true" width="1000" height="1000" loading="lazy" />
+      <span class="viewer-shadow" aria-hidden="true"></span>
       <img class="object-poster" src="${escapeHtml(product.poster || product.views?.[0] || '')}" alt="${title}" width="1000" height="1000" loading="lazy" />
       <span class="viewer-state sr-only" id="viewer-state-${index}">Interactive 3D</span>
     </div>
     <button class="retry-3d" type="button" hidden>Retry 3D</button>
     <h3 class="piece-title">${title}</h3>
-    <a class="stl-download" href="${escapeHtml(product.stl)}" download="poor-little-thing-${escapeHtml(product.id)}-assembly-mm.stl" aria-label="Download ${title} assembly STL in millimeters${downloadSize}">Download assembly STL<span>STL · mm${downloadSize}</span></a>`;
+    <a class="stl-download" href="${escapeHtml(product.stl)}" download="poor-little-thing-${escapeHtml(product.id)}-assembly-mm.stl" aria-label="Download ${title} assembly STL in millimeters${downloadSize}">Download STL${downloadSize}</a>`;
   const controller = gallery3D.add(card, product);
   controllers.push(controller);
   card._pieceController = controller;
