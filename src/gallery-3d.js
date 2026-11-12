@@ -260,7 +260,7 @@ export function createGallery3D({ reduceMotion }) {
     view.stage.setAttribute('aria-valuemin', '-180');
     view.stage.setAttribute('aria-valuemax', '180');
     view.stage.setAttribute('aria-orientation', 'horizontal');
-    view.stage.setAttribute('aria-describedby', `viewer-help viewer-keyboard-help ${view.status.id}`);
+    view.stage.setAttribute('aria-describedby', `viewer-keyboard-help ${view.status.id}`);
     view.stage.tabIndex = 0;
     updateSliderValue(view);
   }

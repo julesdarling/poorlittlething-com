@@ -22,7 +22,7 @@ function createPiece(product, index) {
   const title = escapeHtml(product.title);
   const downloadSize = Number.isFinite(product.stlBytes) && product.stlBytes > 0 ? ` ${(product.stlBytes / 1_000_000).toFixed(1)} MB` : '';
   card.innerHTML = `
-    <div class="object-stage" tabindex="0" role="slider" aria-label="Turn ${title}" aria-valuemin="-180" aria-valuemax="180" aria-valuenow="0" aria-valuetext="0 degrees" aria-orientation="horizontal" aria-describedby="viewer-help viewer-keyboard-help viewer-state-${index}">
+    <div class="object-stage" tabindex="0" role="slider" aria-label="Turn ${title}" aria-valuemin="-180" aria-valuemax="180" aria-valuenow="0" aria-valuetext="0 degrees" aria-orientation="horizontal" aria-describedby="viewer-keyboard-help viewer-state-${index}">
       <img class="viewer-background" src="${escapeHtml(product.background || '/assets/backgrounds/supplied-scene-01.png?v=ebdb635a0c8b')}" alt="" aria-hidden="true" width="1000" height="1000" loading="lazy" />
       <span class="viewer-shadow" aria-hidden="true"></span>
       <img class="object-poster" src="${escapeHtml(product.poster || product.views?.[0] || '')}" alt="${title}" width="1000" height="1000" loading="lazy" />
@@ -77,7 +77,6 @@ async function loadCollection() {
     controllers.forEach(controller => controller.dispose());
     controllers = [];
     grid.replaceChildren(...products.map(createPiece));
-    document.querySelector('#total-count').textContent = String(products.length).padStart(2, '0');
     intersectionObserver?.disconnect();
     intersectionObserver = new IntersectionObserver(entries => entries.forEach(entry => entry.target._pieceController.setVisible(entry.isIntersecting)), { rootMargin: '200px 0px' });
     controllers.forEach(({ card }) => intersectionObserver.observe(card));
