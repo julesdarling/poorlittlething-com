@@ -29,8 +29,13 @@ function createPiece(product, index) {
       <span class="viewer-state sr-only" id="viewer-state-${index}">Interactive 3D</span>
     </div>
     <button class="retry-3d" type="button" hidden>Retry 3D</button>
-    <h3 class="piece-title">${title}</h3>
-    <a class="stl-download" href="${escapeHtml(product.stl)}" download="poor-little-thing-${escapeHtml(product.id)}-assembly-mm.stl" aria-label="Download ${title} assembly STL in millimeters${downloadSize}">Download STL${downloadSize}</a>`;
+    <div class="piece-heading"><h3 class="piece-title">${title}</h3><a class="stl-download" href="${escapeHtml(product.stl)}" download="poor-little-thing-${escapeHtml(product.id)}-assembly-mm.stl" aria-label="Download ${title} STL${downloadSize}" aria-describedby="download-tooltip-${index}"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m-5-5 5 5 5-5M5 17v4h14v-4"/></svg><span class="download-tooltip" id="download-tooltip-${index}" role="tooltip">Download STL${downloadSize}</span></a></div>`;
+  const download = card.querySelector('.stl-download');
+  download.addEventListener('keydown', event => {
+    if (event.key === 'Escape') download.classList.add('tooltip-dismissed');
+  });
+  download.addEventListener('pointerenter', () => download.classList.remove('tooltip-dismissed'));
+  download.addEventListener('focus', () => download.classList.remove('tooltip-dismissed'));
   const controller = gallery3D.add(card, product);
   controllers.push(controller);
   card._pieceController = controller;
