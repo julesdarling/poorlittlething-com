@@ -22,6 +22,7 @@ The production website is generated in `dist/`. The GitHub Actions workflow buil
 - `public/products.json` contains each piece's title, category, colored GLB, assembly STL, and poster image URLs.
 - `public/assets/models/` holds the interactive colored GLB models.
 - `public/downloads/` holds the complete displayed assembly STL files in millimeters.
+- `public/downloads/poor-little-thing-full-stl-collection.zip` bundles all 18 assembly STLs and a short README for the header download.
 - `public/assets/products/` holds fallback poster images.
 - `public/assets/backgrounds/` holds three coordinated toy-world backdrops, assigned per piece.
 - `public/assets/hero.webp` is the supplied hero artwork.
@@ -30,6 +31,8 @@ The production website is generated in `dist/`. The GitHub Actions workflow buil
 - `src/style.css` defines the layout and brand colors.
 
 The gallery uses one shared WebGL renderer with local canvas copies, avoiding a separate WebGL context for every piece. Models load near the viewport, and GPU resources are released as distant pieces leave the active set. Only the featured model rotates; its camera, lights, and background stay fixed. Models stay still at rest and respond to pointer movement. Reduced motion preferences remove the short interpolation between pointer positions.
+
+After changing catalogue STL files, rebuild the full archive with `python3 scripts/package-stls.py --verify-rebuild` and update the header download's cache version to the new archive hash. The script verifies every member against the source STL and uses fixed archive metadata.
 
 Palm Star and Palm Heart use measured `rotationPivot` coordinates around their base and handle axes. Their default poses stay unchanged, and the viewer fits the full swept radius to keep the pieces inside the frame.
 
