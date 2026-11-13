@@ -1,13 +1,13 @@
 import './style.css';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { COLLECTION_GROUPS, PRODUCTS_PER_SECTION } from './collection-groups.js';
 
 gsap.registerPlugin(ScrollTrigger);
 const app = document.querySelector('main');
-const grid = document.querySelector('#product-grid');
+const sections = document.querySelector('#collection-sections');
 const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 let products = [];
-let activeFilter = 'All';
 let controllers = [];
 let intersectionObserver;
 let gallery3D;
@@ -28,7 +28,7 @@ function createPiece(product, index) {
       <span class="viewer-state sr-only" id="viewer-state-${index}">Interactive 3D</span>
     </div>
     <button class="retry-3d" type="button" hidden>Retry 3D</button>
-    <div class="piece-heading"><h3 class="piece-title">${title}</h3><a class="cults-link" href="${escapeHtml(product.cultsUrl)}" target="_blank" rel="noopener noreferrer" aria-label="View ${title} on Cults3D for $6.66" aria-describedby="cults-tooltip-${index}"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3h7v7m0-7L10 14M10 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-5"/></svg><span class="cults-tooltip" id="cults-tooltip-${index}" role="tooltip">View on Cults3D · $6.66</span></a></div>`;
+    <div class="piece-heading"><h4 class="piece-title">${title}</h4><a class="cults-link" href="${escapeHtml(product.cultsUrl)}" target="_blank" rel="noopener noreferrer" aria-label="View ${title} on Cults3D for $6.66" aria-describedby="cults-tooltip-${index}"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3h7v7m0-7L10 14M10 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-5"/></svg><span class="cults-tooltip" id="cults-tooltip-${index}" role="tooltip">View on Cults3D · $6.66</span></a></div>`;
   const cultsLink = card.querySelector('.cults-link');
   cultsLink.addEventListener('keydown', event => {
     if (event.key === 'Escape') cultsLink.classList.add('tooltip-dismissed');
@@ -45,25 +45,56 @@ function escapeHtml(value) {
   return String(value).replace(/[&<>"']/g, character => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[character]);
 }
 
-function updateFilter(next) {
-  activeFilter = next;
-  document.querySelectorAll('.filter').forEach(button => {
-    const active = button.dataset.filter === next;
-    button.classList.toggle('active', active);
-    button.setAttribute('aria-pressed', String(active));
+function createProductSection(group, groupProducts, firstIndex) {
+  const section = document.createElement('section');
+  section.className = 'product-section';
+  section.id = group.id;
+  section.setAttribute('aria-labelledby', `${group.id}-heading`);
+  section.innerHTML = `
+    <div class="section-heading"><h3 id="${group.id}-heading">${group.title}</h3><p>${groupProducts.length} pieces</p></div>
+    <div class="product-grid" id="${group.id}-products"></div>`;
+  const cards = groupProducts.map((product, index) => {
+    const card = createPiece(product, firstIndex + index);
+    card.hidden = index >= PRODUCTS_PER_SECTION;
+    return card;
   });
-  let count = 0;
-  controllers.forEach(({ card }) => {
-    card.hidden = next !== 'All' && card.dataset.category !== next;
-    if (!card.hidden) count++;
-  });
-  document.querySelector('#collection-status').textContent = `${count} ${next === 'All' ? 'pieces' : next === 'Apparel' ? 'apparel pieces' : next.toLowerCase()} in the collection.`;
-  ScrollTrigger.refresh();
+  const grid = section.querySelector('.product-grid');
+  grid.append(...cards);
+
+  if (cards.length > PRODUCTS_PER_SECTION) {
+    const button = document.createElement('button');
+    button.className = 'show-more';
+    button.type = 'button';
+    button.textContent = `Show more ${group.title.toLowerCase()}`;
+    button.setAttribute('aria-expanded', 'false');
+    button.setAttribute('aria-controls', grid.id);
+    button.addEventListener('click', () => {
+      const expanded = button.getAttribute('aria-expanded') !== 'true';
+      cards.slice(PRODUCTS_PER_SECTION).forEach(card => {
+        card.hidden = !expanded;
+        if (!expanded) card._pieceController.setVisible(false);
+      });
+      button.setAttribute('aria-expanded', String(expanded));
+      button.textContent = `Show ${expanded ? 'fewer' : 'more'} ${group.title.toLowerCase()}`;
+      document.querySelector('#collection-status').textContent = `Showing ${expanded ? cards.length : PRODUCTS_PER_SECTION} of ${cards.length} ${group.title.toLowerCase()}.`;
+      ScrollTrigger.refresh();
+      if (expanded) {
+        const firstNewCard = cards[PRODUCTS_PER_SECTION];
+        const stage = firstNewCard.querySelector('.object-stage');
+        const firstControl = stage.tabIndex >= 0 ? stage : firstNewCard.querySelector('.cults-link');
+        firstControl.focus({ preventScroll: true });
+        firstControl.scrollIntoView({ block: 'nearest', behavior: 'instant' });
+      } else {
+        button.scrollIntoView({ block: 'nearest', behavior: 'instant' });
+      }
+    });
+    section.append(button);
+  }
+  return section;
 }
-document.querySelectorAll('.filter').forEach(button => button.addEventListener('click', () => updateFilter(button.dataset.filter)));
 
 async function loadCollection() {
-  grid.setAttribute('aria-busy', 'true');
+  sections.setAttribute('aria-busy', 'true');
   document.querySelector('#collection-error').hidden = true;
   try {
     const response = await fetch('/products.json', { cache: 'no-cache' });
@@ -72,18 +103,30 @@ async function loadCollection() {
     if (!Array.isArray(data) || data.length === 0) throw new Error('Collection unavailable');
     products = data.filter(product => product.title && product.model && product.cultsUrl);
     if (!products.length) throw new Error('Collection unavailable');
+    const categories = new Set(COLLECTION_GROUPS.map(group => group.title));
+    if (products.some(product => !categories.has(product.category))) throw new Error('Unknown product category');
     gallery3D = await (galleryPromise ||= import('./gallery-3d.js').then(({ createGallery3D }) => createGallery3D({ reduceMotion })));
     controllers.forEach(controller => controller.dispose());
     controllers = [];
-    grid.replaceChildren(...products.map(createPiece));
+    let productIndex = 0;
+    const sectionNodes = [];
+    for (const group of COLLECTION_GROUPS) {
+      const groupProducts = products.filter(product => product.category === group.title);
+      if (!groupProducts.length) continue;
+      sectionNodes.push(createProductSection(group, groupProducts, productIndex));
+      productIndex += groupProducts.length;
+    }
+    sections.replaceChildren(...sectionNodes);
     intersectionObserver?.disconnect();
     intersectionObserver = new IntersectionObserver(entries => entries.forEach(entry => entry.target._pieceController.setVisible(entry.isIntersecting)), { rootMargin: '200px 0px' });
     controllers.forEach(({ card }) => intersectionObserver.observe(card));
-    updateFilter(activeFilter);
+    const visibleCount = controllers.filter(({ card }) => !card.hidden).length;
+    document.querySelector('#collection-status').textContent = `${products.length} pieces in ${sectionNodes.length} sections. Showing ${visibleCount} pieces.`;
+    ScrollTrigger.refresh();
   } catch {
     document.querySelector('#collection-error').hidden = false;
   } finally {
-    grid.setAttribute('aria-busy', 'false');
+    sections.setAttribute('aria-busy', 'false');
   }
 }
 document.querySelector('#retry-collection').addEventListener('click', loadCollection);

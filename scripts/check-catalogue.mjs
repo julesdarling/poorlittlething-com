@@ -1,10 +1,12 @@
 import { readFile, readdir, access } from 'node:fs/promises';
 import { join } from 'node:path';
+import { COLLECTION_GROUPS } from '../src/collection-groups.js';
 
 const publicDirectory = new URL('../public/', import.meta.url);
 const products = JSON.parse(await readFile(new URL('products.json', publicDirectory), 'utf8'));
 const ids = new Set();
 const links = new Set();
+const categories = new Set(COLLECTION_GROUPS.map(group => group.title));
 
 if (!Array.isArray(products) || products.length === 0) throw new Error('The catalogue is empty.');
 
@@ -12,6 +14,7 @@ for (const product of products) {
   for (const key of ['id', 'designId', 'title', 'category']) {
     if (typeof product[key] !== 'string' || !product[key].trim()) throw new Error(`Missing product ${key}.`);
   }
+  if (!categories.has(product.category)) throw new Error(`Unknown category: ${product.id}`);
   const link = new URL(product.cultsUrl);
   if (link.origin !== 'https://cults3d.com' || !link.pathname.startsWith('/en/3d-model/')) {
     throw new Error(`Invalid Cults3D buyer link: ${product.id}`);

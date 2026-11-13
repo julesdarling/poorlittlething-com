@@ -21,10 +21,11 @@ The GitHub Actions workflow builds and deploys `dist/` when `main` changes. To i
 
 ## Content
 
-- `public/products.json` contains each piece's canonical design ID, descriptive title, category, Cults3D listing URL (`cultsUrl`), colored GLB, and preview image URLs.
+- `public/products.json` contains each piece's canonical design ID, descriptive title, section category, Cults3D listing URL (`cultsUrl`), colored GLB, and preview image URLs.
+- `src/collection-groups.js` defines the section order and six-product initial limit: Collars, Toys, Hammers, Clamps, Headbands, and Rollers.
 - `public/assets/models/` holds the interactive colored GLB display models.
 - `public/assets/products/` holds transparent fallback poster images.
-- `public/assets/backgrounds/` holds nine supplied flat backdrops with varied assignments across rows and filtered lists.
+- `public/assets/backgrounds/` holds nine supplied flat backdrops with varied assignments across the catalogue.
 - `public/assets/hero.webp` is the supplied hero artwork.
 - `public/assets/stacked-logo.svg` preserves the approved stacked brand artwork.
 - `index.html` contains the introduction, manifesto, inquiry address, and metadata.
@@ -38,6 +39,8 @@ The site does not host STL, 3MF, G-code, or ZIP print downloads. The former coll
 ## Updating the catalogue
 
 Use a verified public Cults3D buyer URL for each product's `cultsUrl`. Preserve the product's design ID, GLB, poster, background, and presentation settings when changing its purchase link. Do not add local print-download URLs or metadata to `products.json`.
+
+Assign each product to one category listed in `src/collection-groups.js`. The catalogue shows separate section headers and up to six cards per section. Sections with more products have an independent Show more button that reveals the remaining pieces, then becomes Show fewer. Hidden cards stay outside the turntable loading area until revealed. The build rejects unknown categories so a product cannot silently disappear from the sections.
 
 Run `node scripts/check-catalogue.mjs` to validate the catalogue without building it. Before deployment, check the fresh `dist/` directory for retired print assets and confirm the purchase links, 3D gallery, and image fallbacks. After deployment, verify that the former print-download URLs and bundle manifest return HTTP 404 while the gallery assets remain available.
 
