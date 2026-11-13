@@ -7,7 +7,7 @@ export const COLLECTION_GROUPS = [
   { id: 'scratchers', title: 'Scratchers' },
   { id: 'clamps', title: 'Clamps' },
   { id: 'rollers', title: 'Roller spikes' },
-  { id: 'leashes', title: 'Leashes' },
   { id: 'collars', title: 'Collars' },
+  { id: 'leashes', title: 'Leashes' },
   { id: 'headbands', title: 'Headbands' },
 ];

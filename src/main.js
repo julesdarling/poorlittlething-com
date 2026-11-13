@@ -51,7 +51,7 @@ function createProductSection(group, groupProducts, firstIndex) {
   section.id = group.id;
   section.setAttribute('aria-labelledby', `${group.id}-heading`);
   section.innerHTML = `
-    <div class="section-heading"><h3 id="${group.id}-heading">${group.title}</h3><p>${groupProducts.length} pieces</p></div>
+    <div class="section-heading"><h3 id="${group.id}-heading">${group.title}</h3></div>
     <div class="product-grid" id="${group.id}-products"></div>`;
   const cards = groupProducts.map((product, index) => {
     const card = createPiece(product, firstIndex + index);

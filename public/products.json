@@ -425,21 +425,21 @@
     "cultsUrl": "https://cults3d.com/en/3d-model/fashion/lop-sweep-ear-headband-poor-little-thing"
   },
   {
-    "id": "large-spiked-screw-clamp",
-    "designId": "PP-07XL",
-    "sourceId": "PP-07XL",
-    "title": "Large Spiked Screw Clamp",
+    "id": "single-spike-screw-clamp",
+    "designId": "REVIEW-CLAMP-ONE",
+    "sourceId": "REVIEW-CLAMP-ONE",
+    "title": "Single Spike Screw Clamp",
     "category": "Clamps",
-    "model": "/assets/models/large-spiked-screw-clamp.glb?v=312b066fc88d",
-    "poster": "/assets/products/large-spiked-screw-clamp/floating-poster.webp?v=e81dd35066b4",
-    "background": "/assets/backgrounds/supplied-scene-07.png?v=e2babf509e2d",
-    "modelBytes": 6565248,
+    "model": "/assets/models/single-spike-screw-clamp.glb?v=f8677f816eec",
+    "poster": "/assets/products/single-spike-screw-clamp/floating-poster.webp?v=0cb88a971dfa",
+    "background": "/assets/backgrounds/supplied-scene-05.png?v=384d19d89a51",
+    "modelBytes": 389964,
     "modelRotation": [
       0,
       0,
       0
     ],
-    "cultsUrl": "https://cults3d.com/en/3d-model/naughties/little-c-xl-printed-screw-clamp-poor-little-thing"
+    "cultsUrl": "https://cults3d.com/en/3d-model/naughties/little-c-single-point-clamp-poor-little-thing"
   },
   {
     "id": "flame-collar",
@@ -586,21 +586,21 @@
     "cultsUrl": "https://cults3d.com/en/3d-model/fashion/red-ram-horn-headband-poor-little-thing"
   },
   {
-    "id": "single-spike-screw-clamp",
-    "designId": "REVIEW-CLAMP-ONE",
-    "sourceId": "REVIEW-CLAMP-ONE",
-    "title": "Single Spike Screw Clamp",
+    "id": "large-spiked-screw-clamp",
+    "designId": "PP-07XL",
+    "sourceId": "PP-07XL",
+    "title": "Large Spiked Screw Clamp",
     "category": "Clamps",
-    "model": "/assets/models/single-spike-screw-clamp.glb?v=f8677f816eec",
-    "poster": "/assets/products/single-spike-screw-clamp/floating-poster.webp?v=0cb88a971dfa",
-    "background": "/assets/backgrounds/supplied-scene-05.png?v=384d19d89a51",
-    "modelBytes": 389964,
+    "model": "/assets/models/large-spiked-screw-clamp.glb?v=312b066fc88d",
+    "poster": "/assets/products/large-spiked-screw-clamp/floating-poster.webp?v=e81dd35066b4",
+    "background": "/assets/backgrounds/supplied-scene-07.png?v=e2babf509e2d",
+    "modelBytes": 6565248,
     "modelRotation": [
       0,
       0,
       0
     ],
-    "cultsUrl": "https://cults3d.com/en/3d-model/naughties/little-c-single-point-clamp-poor-little-thing"
+    "cultsUrl": "https://cults3d.com/en/3d-model/naughties/little-c-xl-printed-screw-clamp-poor-little-thing"
   },
   {
     "id": "spring-loaded-roller-press",
