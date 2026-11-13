@@ -669,5 +669,90 @@
       0
     ],
     "cultsUrl": "https://cults3d.com/en/3d-model/naughties/claw-hammer-with-textured-grip-poor-little-thing"
+  },
+  {
+    "id": "ring-clamp-pair",
+    "designId": "REVIEW-NIPPLE-RING",
+    "sourceId": "REVIEW-NIPPLE-RING",
+    "title": "Ring Clamp Pair",
+    "category": "Toys",
+    "model": "/assets/models/ring-clamp-pair.glb?v=ceac45d28a58",
+    "poster": "/assets/products/ring-clamp-pair/floating-poster.webp?v=89c4b2329e32",
+    "background": "/assets/backgrounds/supplied-scene-03.png?v=5654096dcee6",
+    "modelBytes": 8590924,
+    "modelRotation": [
+      0,
+      0,
+      0
+    ],
+    "cultsUrl": "https://cults3d.com/en/3d-model/naughties/ring-clamp-pair-with-35-link-chain-poor-little-thing"
+  },
+  {
+    "id": "chain-leash",
+    "designId": "REVIEW-CHAIN-LEASH",
+    "sourceId": "REVIEW-CHAIN-LEASH",
+    "title": "Three-Foot Chain Leash",
+    "category": "Toys",
+    "model": "/assets/models/chain-leash.glb?v=933775d4610d",
+    "poster": "/assets/products/chain-leash/floating-poster.webp?v=9820ef5aacf7",
+    "background": "/assets/backgrounds/supplied-scene-04.png?v=6df51b5189e2",
+    "modelBytes": 10422484,
+    "modelRotation": [
+      0,
+      0,
+      0
+    ],
+    "cultsUrl": "https://cults3d.com/en/3d-model/naughties/three-foot-chain-leash-with-springless-clasp-poor-little-thing"
+  },
+  {
+    "id": "toy-pliers",
+    "designId": "REVIEW-PLIERS",
+    "sourceId": "REVIEW-PLIERS",
+    "title": "Toy Pliers",
+    "category": "Toys",
+    "model": "/assets/models/toy-pliers.glb?v=8a1f011ede89",
+    "poster": "/assets/products/toy-pliers/floating-poster.webp?v=349b3aea7c63",
+    "background": "/assets/backgrounds/supplied-scene-01.png?v=ebdb635a0c8b",
+    "modelBytes": 817048,
+    "modelRotation": [
+      0,
+      0,
+      0
+    ],
+    "cultsUrl": "https://cults3d.com/en/3d-model/naughties/toy-pliers-with-red-inner-spikes-poor-little-thing"
+  },
+  {
+    "id": "candy-hearts-collar",
+    "designId": "REVIEW-COLLAR-HEART",
+    "sourceId": "REVIEW-COLLAR-HEART",
+    "title": "Candy Hearts Collar",
+    "category": "Apparel",
+    "model": "/assets/models/candy-hearts-collar.glb?v=4048a1f48df0",
+    "poster": "/assets/products/candy-hearts-collar/floating-poster.webp?v=d3b2c2919fbf",
+    "background": "/assets/backgrounds/supplied-scene-09.png?v=f646f5979ed2",
+    "modelBytes": 4343612,
+    "modelRotation": [
+      0,
+      0,
+      0
+    ],
+    "cultsUrl": "https://cults3d.com/en/3d-model/naughties/candy-hearts-collar-poor-little-thing"
+  },
+  {
+    "id": "large-spike-collar",
+    "designId": "REVIEW-BASIC-COLLAR-LARGE",
+    "sourceId": "REVIEW-BASIC-COLLAR-LARGE",
+    "title": "Large Spike Collar",
+    "category": "Apparel",
+    "model": "/assets/models/large-spike-collar.glb?v=487603d5226d",
+    "poster": "/assets/products/large-spike-collar/floating-poster.webp?v=0e6d6cc5d896",
+    "background": "/assets/backgrounds/supplied-scene-07.png?v=e2babf509e2d",
+    "modelBytes": 3242528,
+    "modelRotation": [
+      0,
+      0,
+      0
+    ],
+    "cultsUrl": "https://cults3d.com/en/3d-model/naughties/large-spike-collar-poor-little-thing"
   }
 ]

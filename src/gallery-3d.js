@@ -135,6 +135,11 @@ const SHADOW_LAYOUTS = {
   "REVIEW-CAP-BOTTOM": [47.9, 89.4, 6.2],
   "REVIEW-CAP-BOTH": [45.4, 87.9, 5.9],
   "REVIEW-HAMMER": [32, 91.5, 4.5],
+  "REVIEW-NIPPLE-RING": [26, 92.8, 4.5],
+  "REVIEW-CHAIN-LEASH": [26, 93.7, 4.5],
+  "REVIEW-PLIERS": [26, 94, 4.5],
+  "REVIEW-COLLAR-HEART": [58, 83, 7.5],
+  "REVIEW-BASIC-COLLAR-LARGE": [58, 83, 7.5],
 };
 
 export function createGalleryCamera() {

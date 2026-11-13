@@ -31,7 +31,7 @@ The GitHub Actions workflow builds and deploys `dist/` when `main` changes. To i
 - `src/style.css` defines the layout and brand colors.
 - `src/gallery-3d.js` controls the interactive gallery.
 
-Each product card links to its individual Cults3D listing, priced at US$6.66. Purchase, licensing, and delivery of the printable files happen on Cults3D. The website has no checkout, visitor accounts, analytics, or form backend.
+The catalogue contains all 44 approved non-tag designs, including the Ring Clamp Pair, Three-Foot Chain Leash, Toy Pliers, Candy Hearts Collar, and Large Spike Collar. Each product card links to its individual public Cults3D listing, priced at US$6.66 with a personal-use license. Purchase, licensing, and delivery of the printable files happen on Cults3D. The website has no checkout, visitor accounts, analytics, or form backend.
 
 The site does not host STL, 3MF, G-code, or ZIP print downloads. The former collection and tag bundles, assembly STLs, tag inputs, bundle manifest, and packaging script were preserved outside this repository at `../website-setup-evidence/cults-links-2026-11-12/retired-site-downloads/`. Their file sizes and SHA-256 hashes are recorded in `../website-setup-evidence/cults-links-2026-11-12/retired-downloads-manifest.json`. Keep historical and canonical print sources outside the website's public assets.
 
