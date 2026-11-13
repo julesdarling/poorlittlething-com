@@ -4,6 +4,3 @@ dist/
 *.log
 __pycache__/
 *.py[cod]
-public/downloads/poor-little-thing-full-stl-collection.zip
-public/downloads/poor-little-thing-tags.zip
-public/bundles-manifest.json

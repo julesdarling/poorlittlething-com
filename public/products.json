@@ -6,18 +6,15 @@
     "title": "Rope Saw",
     "category": "Toys",
     "model": "/assets/models/rope-saw.glb?v=cfcd9e66b899",
-    "stl": "/downloads/rope-saw-assembly-mm.stl?v=7859aba9b17e",
     "poster": "/assets/products/rope-saw/floating-poster.webp?v=39d86a5ce92f",
     "background": "/assets/backgrounds/supplied-scene-01.png?v=ebdb635a0c8b",
     "modelBytes": 18843208,
-    "stlBytes": 20740684,
     "modelRotation": [
       0,
       0,
       0
     ],
-    "stlUnits": "mm",
-    "stlScope": "assembly"
+    "cultsUrl": "https://cults3d.com/en/3d-model/naughties/rope-saw-with-printed-fasteners-poor-little-thing"
   },
   {
     "id": "talon",
@@ -26,18 +23,15 @@
     "title": "Curved Claw Cuff",
     "category": "Toys",
     "model": "/assets/models/talon.glb?v=32a162043a7c",
-    "stl": "/downloads/curved-claw-cuff-assembly-mm.stl?v=0dd56702848d",
     "poster": "/assets/products/talon/floating-poster.webp?v=bd2398dded12",
     "background": "/assets/backgrounds/supplied-scene-06.png?v=6e33fb8bc78d",
     "modelBytes": 855876,
-    "stlBytes": 3339384,
     "modelRotation": [
       0,
       0,
       0
     ],
-    "stlUnits": "mm",
-    "stlScope": "assembly"
+    "cultsUrl": "https://cults3d.com/en/3d-model/naughties/talon-curved-claw-cuff-poor-little-thing"
   },
   {
     "id": "orbit",
@@ -46,18 +40,15 @@
     "title": "Textured Barrel Roller",
     "category": "Toys",
     "model": "/assets/models/orbit.glb?v=5e853925941f",
-    "stl": "/downloads/textured-barrel-roller-assembly-mm.stl?v=11e8772613fa",
     "poster": "/assets/products/orbit/floating-poster.webp?v=13a9e27e2d73",
     "background": "/assets/backgrounds/supplied-scene-03.png?v=5654096dcee6",
     "modelBytes": 1878236,
-    "stlBytes": 3087884,
     "modelRotation": [
       0,
       0,
       0
     ],
-    "stlUnits": "mm",
-    "stlScope": "assembly"
+    "cultsUrl": "https://cults3d.com/en/3d-model/naughties/orbit-textured-barrel-poor-little-thing"
   },
   {
     "id": "trio",
@@ -66,18 +57,15 @@
     "title": "Three Spike Claw Cuff",
     "category": "Toys",
     "model": "/assets/models/trio.glb?v=57f2f76262d6",
-    "stl": "/downloads/three-spike-claw-cuff-assembly-mm.stl?v=aac6ad600c2d",
     "poster": "/assets/products/trio/floating-poster.webp?v=4d1d4e7834bf",
     "background": "/assets/backgrounds/supplied-scene-06.png?v=6e33fb8bc78d",
     "modelBytes": 1363720,
-    "stlBytes": 5867284,
     "modelRotation": [
       0,
       0,
       0
     ],
-    "stlUnits": "mm",
-    "stlScope": "assembly"
+    "cultsUrl": "https://cults3d.com/en/3d-model/naughties/trio-three-prong-claw-cuff-poor-little-thing"
   },
   {
     "id": "scallop",
@@ -86,38 +74,32 @@
     "title": "Spiked Wheel Cuff",
     "category": "Toys",
     "model": "/assets/models/scallop.glb?v=0f14a88c379e",
-    "stl": "/downloads/spiked-wheel-cuff-assembly-mm.stl?v=8f400b678d66",
     "poster": "/assets/products/scallop/floating-poster.webp?v=97740eb8aa42",
     "background": "/assets/backgrounds/supplied-scene-05.png?v=384d19d89a51",
     "modelBytes": 665160,
-    "stlBytes": 2263384,
     "modelRotation": [
       0,
       0,
       0
     ],
-    "stlUnits": "mm",
-    "stlScope": "assembly"
+    "cultsUrl": "https://cults3d.com/en/3d-model/naughties/scallop-twelve-tooth-wheel-cuff-poor-little-thing"
   },
   {
     "id": "bramble",
     "designId": "PP-06",
     "sourceId": "PP-06",
-    "title": "Five Spike Finger Cuff",
+    "title": "Spiked Finger Cuff",
     "category": "Toys",
     "model": "/assets/models/bramble.glb?v=f8e982884946",
-    "stl": "/downloads/five-spike-finger-cuff-assembly-mm.stl?v=c3090509c293",
     "poster": "/assets/products/bramble/floating-poster.webp?v=72a40f492a33",
     "background": "/assets/backgrounds/supplied-scene-02.png?v=40fd27d74941",
     "modelBytes": 533520,
-    "stlBytes": 1629184,
     "modelRotation": [
       0,
       0,
       0
     ],
-    "stlUnits": "mm",
-    "stlScope": "assembly"
+    "cultsUrl": "https://cults3d.com/en/3d-model/naughties/bramble-spiked-cuff-poor-little-thing"
   },
   {
     "id": "little-c",
@@ -126,18 +108,15 @@
     "title": "Spiked Screw Clamp",
     "category": "Toys",
     "model": "/assets/models/little-c.glb?v=6bc47f4ff6b7",
-    "stl": "/downloads/spiked-screw-clamp-assembly-mm.stl?v=efa2a3423c72",
     "poster": "/assets/products/little-c/floating-poster.webp?v=fb887c25f909",
     "background": "/assets/backgrounds/supplied-scene-07.png?v=e2babf509e2d",
     "modelBytes": 432384,
-    "stlBytes": 1419084,
     "modelRotation": [
       0,
       0,
       0
     ],
-    "stlUnits": "mm",
-    "stlScope": "assembly"
+    "cultsUrl": "https://cults3d.com/en/3d-model/naughties/little-c-spiked-screw-clamp-poor-little-thing"
   },
   {
     "id": "twist-grip-cups",
@@ -146,18 +125,15 @@
     "title": "Twist Grip Cups",
     "category": "Toys",
     "model": "/assets/models/twist-grip-cups.glb?v=b0f40cacac8b",
-    "stl": "/downloads/twist-grip-cups-assembly-mm.stl?v=fb764ef75632",
     "poster": "/assets/products/twist-grip-cups/floating-poster.webp?v=2af410c97aa4",
     "background": "/assets/backgrounds/supplied-scene-01.png?v=ebdb635a0c8b",
     "modelBytes": 913764,
-    "stlBytes": 2888684,
     "modelRotation": [
       0,
       0,
       0
     ],
-    "stlUnits": "mm",
-    "stlScope": "assembly"
+    "cultsUrl": "https://cults3d.com/en/3d-model/naughties/twist-twins-grip-cups-poor-little-thing"
   },
   {
     "id": "spiked-heel-discs",
@@ -166,18 +142,15 @@
     "title": "Spiked Heel Discs",
     "category": "Apparel",
     "model": "/assets/models/spiked-heel-discs.glb?v=e7d2fe082f39",
-    "stl": "/downloads/spiked-heel-discs-assembly-mm.stl?v=329b0cb18d31",
     "poster": "/assets/products/spiked-heel-discs/floating-poster.webp?v=657c43336384",
     "background": "/assets/backgrounds/supplied-scene-04.png?v=6df51b5189e2",
     "modelBytes": 996524,
-    "stlBytes": 3675084,
     "modelRotation": [
       0,
       0,
       0
     ],
-    "stlUnits": "mm",
-    "stlScope": "assembly"
+    "cultsUrl": "https://cults3d.com/en/3d-model/naughties/heel-discs-with-strap-loops-poor-little-thing"
   },
   {
     "id": "spiked-foot-soles",
@@ -186,18 +159,15 @@
     "title": "Spiked Foot Soles",
     "category": "Apparel",
     "model": "/assets/models/spiked-foot-soles.glb?v=17868ce12287",
-    "stl": "/downloads/spiked-foot-soles-assembly-mm.stl?v=ebacaba2b3c9",
     "poster": "/assets/products/spiked-foot-soles/floating-poster.webp?v=5cdcc87db8a5",
     "background": "/assets/backgrounds/supplied-scene-08.png?v=28c2a6839da0",
     "modelBytes": 404288,
-    "stlBytes": 1010284,
     "modelRotation": [
       0,
       0,
       0
     ],
-    "stlUnits": "mm",
-    "stlScope": "assembly"
+    "cultsUrl": "https://cults3d.com/en/3d-model/naughties/sunny-steps-cone-soles-poor-little-thing"
   },
   {
     "id": "raised-grain-tile",
@@ -206,18 +176,15 @@
     "title": "Raised Grain Tile",
     "category": "Toys",
     "model": "/assets/models/raised-grain-tile.glb?v=b2a624c8b698",
-    "stl": "/downloads/raised-grain-tile-assembly-mm.stl?v=36a430e6d134",
     "poster": "/assets/products/raised-grain-tile/floating-poster.webp?v=0301f59e5920",
     "background": "/assets/backgrounds/supplied-scene-03.png?v=5654096dcee6",
     "modelBytes": 1125132,
-    "stlBytes": 4844084,
     "modelRotation": [
       0,
       0,
       0
     ],
-    "stlUnits": "mm",
-    "stlScope": "assembly"
+    "cultsUrl": "https://cults3d.com/en/3d-model/naughties/broad-grain-textured-tile-poor-little-thing"
   },
   {
     "id": "spiked-scalp-dome",
@@ -226,18 +193,15 @@
     "title": "Spiked Scalp Dome",
     "category": "Toys",
     "model": "/assets/models/spiked-scalp-dome.glb?v=e329ae5f1d2f",
-    "stl": "/downloads/spiked-scalp-dome-assembly-mm.stl?v=a7f79435299c",
     "poster": "/assets/products/spiked-scalp-dome/floating-poster.webp?v=b2feab1d9396",
     "background": "/assets/backgrounds/supplied-scene-09.png?v=f646f5979ed2",
     "modelBytes": 690604,
-    "stlBytes": 1314784,
     "modelRotation": [
       0,
       0,
       0
     ],
-    "stlUnits": "mm",
-    "stlScope": "assembly"
+    "cultsUrl": "https://cults3d.com/en/3d-model/naughties/dome-cone-comb-poor-little-thing"
   },
   {
     "id": "crank",
@@ -246,18 +210,15 @@
     "title": "Handheld Spike Roller",
     "category": "Toys",
     "model": "/assets/models/crank.glb?v=3bb80eac70c9",
-    "stl": "/downloads/handheld-spike-roller-assembly-mm.stl?v=58c5ac800b9c",
     "poster": "/assets/products/crank/floating-poster.webp?v=7e8c613a413e",
     "background": "/assets/backgrounds/supplied-scene-02.png?v=40fd27d74941",
     "modelBytes": 628036,
-    "stlBytes": 2104984,
     "modelRotation": [
       0,
       0,
       0
     ],
-    "stlUnits": "mm",
-    "stlScope": "assembly"
+    "cultsUrl": "https://cults3d.com/en/3d-model/naughties/crank-handheld-spiked-roller-poor-little-thing"
   },
   {
     "id": "block-party",
@@ -266,18 +227,15 @@
     "title": "Spiked Block Mallet",
     "category": "Toys",
     "model": "/assets/models/block-party.glb?v=e355e55143ea",
-    "stl": "/downloads/spiked-block-mallet-assembly-mm.stl?v=c6a3694830b6",
     "poster": "/assets/products/block-party/floating-poster.webp?v=712e8950e20b",
     "background": "/assets/backgrounds/supplied-scene-01.png?v=ebdb635a0c8b",
     "modelBytes": 425556,
-    "stlBytes": 1002184,
     "modelRotation": [
       0,
       0,
       0
     ],
-    "stlUnits": "mm",
-    "stlScope": "assembly"
+    "cultsUrl": "https://cults3d.com/en/3d-model/naughties/block-party-spiked-block-poor-little-thing"
   },
   {
     "id": "double-ended-spike-fork",
@@ -286,18 +244,15 @@
     "title": "Double-Ended Spike Fork",
     "category": "Toys",
     "model": "/assets/models/double-ended-spike-fork.glb?v=8831693b5a5e",
-    "stl": "/downloads/double-ended-spike-fork-assembly-mm.stl?v=3e97a73a37a8",
     "poster": "/assets/products/double-ended-spike-fork/floating-poster.webp?v=63eb505e140d",
     "background": "/assets/backgrounds/supplied-scene-08.png?v=28c2a6839da0",
     "modelBytes": 209616,
-    "stlBytes": 666084,
     "modelRotation": [
       0,
       0,
       0
     ],
-    "stlUnits": "mm",
-    "stlScope": "assembly"
+    "cultsUrl": "https://cults3d.com/en/3d-model/naughties/twin-crest-double-fork-poor-little-thing"
   },
   {
     "id": "palm-mounted-spike-roller",
@@ -306,18 +261,15 @@
     "title": "Palm-Mounted Spike Roller",
     "category": "Toys",
     "model": "/assets/models/palm-mounted-spike-roller.glb?v=7aaf10a734d5",
-    "stl": "/downloads/palm-mounted-spike-roller-assembly-mm.stl?v=8f82c3f71f15",
     "poster": "/assets/products/palm-mounted-spike-roller/floating-poster.webp?v=e88222a53fc0",
     "background": "/assets/backgrounds/supplied-scene-03.png?v=5654096dcee6",
     "modelBytes": 920612,
-    "stlBytes": 2863984,
     "modelRotation": [
       0,
       0,
       0
     ],
-    "stlUnits": "mm",
-    "stlScope": "assembly"
+    "cultsUrl": "https://cults3d.com/en/3d-model/naughties/palm-orbit-mounted-barrel-roller-poor-little-thing"
   },
   {
     "id": "alligator",
@@ -326,18 +278,15 @@
     "title": "Spike Scissors",
     "category": "Toys",
     "model": "/assets/models/alligator.glb?v=6e953116f3c9",
-    "stl": "/downloads/spike-scissors-assembly-mm.stl?v=8e2fba52e607",
     "poster": "/assets/products/alligator/floating-poster.webp?v=479db98cb448",
     "background": "/assets/backgrounds/supplied-scene-04.png?v=6df51b5189e2",
     "modelBytes": 363220,
-    "stlBytes": 1310884,
     "modelRotation": [
       0,
       0,
       0
     ],
-    "stlUnits": "mm",
-    "stlScope": "assembly"
+    "cultsUrl": "https://cults3d.com/en/3d-model/naughties/alligator-twin-lever-clamp-poor-little-thing"
   },
   {
     "id": "crescent",
@@ -346,18 +295,15 @@
     "title": "Adjustable Spiked Collar",
     "category": "Apparel",
     "model": "/assets/models/crescent.glb?v=1dd84dfabcd4",
-    "stl": "/downloads/adjustable-spiked-collar-assembly-mm.stl?v=6bca09969d5f",
     "poster": "/assets/products/crescent/floating-poster.webp?v=af0698876aba",
     "background": "/assets/backgrounds/supplied-scene-05.png?v=384d19d89a51",
     "modelBytes": 10083180,
-    "stlBytes": 17601584,
     "modelRotation": [
       0,
       0,
       0
     ],
-    "stlUnits": "mm",
-    "stlScope": "assembly"
+    "cultsUrl": "https://cults3d.com/en/3d-model/naughties/crescent-threaded-jaw-assembly-poor-little-thing"
   },
   {
     "id": "tall-sweep",
@@ -366,18 +312,15 @@
     "title": "Cat Ear Headband",
     "category": "Apparel",
     "model": "/assets/models/tall-sweep.glb?v=571bfeab6683",
-    "stl": "/downloads/cat-ear-headband-assembly-mm.stl?v=adde3916e9a5",
     "poster": "/assets/products/tall-sweep/floating-poster.webp?v=171935edbdea",
     "background": "/assets/backgrounds/supplied-scene-09.png?v=f646f5979ed2",
     "modelBytes": 3027064,
-    "stlBytes": 14939184,
     "modelRotation": [
       0,
       0,
       0
     ],
-    "stlUnits": "mm",
-    "stlScope": "assembly"
+    "cultsUrl": "https://cults3d.com/en/3d-model/fashion/tall-sweep-ear-headband-poor-little-thing"
   },
   {
     "id": "short-spike-headband",
@@ -386,18 +329,15 @@
     "title": "Short Spike Headband",
     "category": "Apparel",
     "model": "/assets/models/short-spike-headband.glb?v=9f001409685e",
-    "stl": "/downloads/short-spike-headband-assembly-mm.stl?v=504af65d02da",
     "poster": "/assets/products/short-spike-headband/floating-poster.webp?v=277dadd0d10e",
     "background": "/assets/backgrounds/supplied-scene-07.png?v=e2babf509e2d",
     "modelBytes": 2748680,
-    "stlBytes": 13652484,
     "modelRotation": [
       0,
       0,
       0
     ],
-    "stlUnits": "mm",
-    "stlScope": "assembly"
+    "cultsUrl": "https://cults3d.com/en/3d-model/fashion/twin-cone-headband-poor-little-thing"
   },
   {
     "id": "five-spike-crown-headband",
@@ -406,18 +346,15 @@
     "title": "Five Spike Crown Headband",
     "category": "Apparel",
     "model": "/assets/models/five-spike-crown-headband.glb?v=2d1e0a939e19",
-    "stl": "/downloads/five-spike-crown-headband-assembly-mm.stl?v=fba8a9192d3d",
     "poster": "/assets/products/five-spike-crown-headband/floating-poster.webp?v=e6105113f625",
     "background": "/assets/backgrounds/supplied-scene-06.png?v=6e33fb8bc78d",
     "modelBytes": 2756876,
-    "stlBytes": 13666584,
     "modelRotation": [
       0,
       0,
       0
     ],
-    "stlUnits": "mm",
-    "stlScope": "assembly"
+    "cultsUrl": "https://cults3d.com/en/3d-model/fashion/five-cone-crown-headband-poor-little-thing"
   },
   {
     "id": "bunny-sweep",
@@ -426,18 +363,15 @@
     "title": "Bunny Headband",
     "category": "Apparel",
     "model": "/assets/models/bunny-sweep.glb?v=ce5c002a9b77",
-    "stl": "/downloads/bunny-headband-assembly-mm.stl?v=5dd40415c3d1",
     "poster": "/assets/products/bunny-sweep/floating-poster.webp?v=d7ff538e978d",
     "background": "/assets/backgrounds/supplied-scene-04.png?v=6df51b5189e2",
     "modelBytes": 3289336,
-    "stlBytes": 16424984,
     "modelRotation": [
       0,
       0,
       0
     ],
-    "stlUnits": "mm",
-    "stlScope": "assembly"
+    "cultsUrl": "https://cults3d.com/en/3d-model/fashion/bunny-sweep-headband-poor-little-thing"
   },
   {
     "id": "tall-spike-headband",
@@ -446,18 +380,15 @@
     "title": "Tall Spike Headband",
     "category": "Apparel",
     "model": "/assets/models/tall-spike-headband.glb?v=d51089d79358",
-    "stl": "/downloads/tall-spike-headband-assembly-mm.stl?v=4586a9bfc139",
     "poster": "/assets/products/tall-spike-headband/floating-poster.webp?v=4bd54dcdf540",
     "background": "/assets/backgrounds/supplied-scene-03.png?v=5654096dcee6",
     "modelBytes": 2754452,
-    "stlBytes": 13652484,
     "modelRotation": [
       0,
       0,
       0
     ],
-    "stlUnits": "mm",
-    "stlScope": "assembly"
+    "cultsUrl": "https://cults3d.com/en/3d-model/fashion/big-twin-cone-headband-poor-little-thing"
   },
   {
     "id": "puppy-fold",
@@ -466,18 +397,15 @@
     "title": "Puppy Ear Headband",
     "category": "Apparel",
     "model": "/assets/models/puppy-fold.glb?v=b68e2c82f986",
-    "stl": "/downloads/puppy-ear-headband-assembly-mm.stl?v=88fc4c7d0226",
     "poster": "/assets/products/puppy-fold/floating-poster.webp?v=56d7129dcd84",
     "background": "/assets/backgrounds/supplied-scene-05.png?v=384d19d89a51",
     "modelBytes": 3304088,
-    "stlBytes": 16432084,
     "modelRotation": [
       0,
       0,
       0
     ],
-    "stlUnits": "mm",
-    "stlScope": "assembly"
+    "cultsUrl": "https://cults3d.com/en/3d-model/fashion/puppy-fold-ear-headband-poor-little-thing"
   },
   {
     "id": "lop-ear-headband",
@@ -486,18 +414,15 @@
     "title": "Lop Ear Headband",
     "category": "Apparel",
     "model": "/assets/models/lop-ear-headband.glb?v=18d35899f0d0",
-    "stl": "/downloads/lop-ear-headband-assembly-mm.stl?v=83e9957c5036",
     "poster": "/assets/products/lop-ear-headband/floating-poster.webp?v=fc7d161b0a7c",
     "background": "/assets/backgrounds/supplied-scene-01.png?v=ebdb635a0c8b",
     "modelBytes": 3477288,
-    "stlBytes": 17381384,
     "modelRotation": [
       0,
       0,
       0
     ],
-    "stlUnits": "mm",
-    "stlScope": "assembly"
+    "cultsUrl": "https://cults3d.com/en/3d-model/fashion/lop-sweep-ear-headband-poor-little-thing"
   },
   {
     "id": "large-spiked-screw-clamp",
@@ -506,18 +431,15 @@
     "title": "Large Spiked Screw Clamp",
     "category": "Toys",
     "model": "/assets/models/large-spiked-screw-clamp.glb?v=312b066fc88d",
-    "stl": "/downloads/large-spiked-screw-clamp-assembly-mm.stl?v=4df7594e6927",
     "poster": "/assets/products/large-spiked-screw-clamp/floating-poster.webp?v=e81dd35066b4",
     "background": "/assets/backgrounds/supplied-scene-07.png?v=e2babf509e2d",
     "modelBytes": 6565248,
-    "stlBytes": 9313584,
     "modelRotation": [
       0,
       0,
       0
     ],
-    "stlUnits": "mm",
-    "stlScope": "assembly"
+    "cultsUrl": "https://cults3d.com/en/3d-model/naughties/little-c-xl-printed-screw-clamp-poor-little-thing"
   },
   {
     "id": "flame-collar",
@@ -526,18 +448,15 @@
     "title": "Candle Holder Collar",
     "category": "Apparel",
     "model": "/assets/models/flame-collar.glb?v=3d4b52ff11ab",
-    "stl": "/downloads/candle-holder-collar-assembly-mm.stl?v=51df3393c4bb",
     "poster": "/assets/products/flame-collar/floating-poster.webp?v=e3039e401408",
     "background": "/assets/backgrounds/supplied-scene-09.png?v=f646f5979ed2",
     "modelBytes": 8239772,
-    "stlBytes": 15971784,
     "modelRotation": [
       0,
       0,
       0
     ],
-    "stlUnits": "mm",
-    "stlScope": "assembly"
+    "cultsUrl": "https://cults3d.com/en/3d-model/naughties/flame-collar-with-candle-arm-poor-little-thing"
   },
   {
     "id": "spike-posture-collar",
@@ -546,18 +465,15 @@
     "title": "Spike Posture Collar",
     "category": "Apparel",
     "model": "/assets/models/spike-posture-collar.glb?v=ef90aad8c96b",
-    "stl": "/downloads/spike-posture-collar-assembly-mm.stl?v=6081894b3f09",
     "poster": "/assets/products/spike-posture-collar/floating-poster.webp?v=f1b522fe2f13",
     "background": "/assets/backgrounds/supplied-scene-08.png?v=28c2a6839da0",
     "modelBytes": 592116,
-    "stlBytes": 906284,
     "modelRotation": [
       0,
       0,
       0
     ],
-    "stlUnits": "mm",
-    "stlScope": "assembly"
+    "cultsUrl": "https://cults3d.com/en/3d-model/naughties/spike-posture-collar-panel-poor-little-thing"
   },
   {
     "id": "flame-posture-collar",
@@ -566,18 +482,15 @@
     "title": "Flame Posture Collar",
     "category": "Apparel",
     "model": "/assets/models/flame-posture-collar.glb?v=b5d4a7477a69",
-    "stl": "/downloads/flame-posture-collar-assembly-mm.stl?v=d400cf4dc24c",
     "poster": "/assets/products/flame-posture-collar/floating-poster.webp?v=72ac222833d7",
     "background": "/assets/backgrounds/supplied-scene-06.png?v=6e33fb8bc78d",
     "modelBytes": 2411540,
-    "stlBytes": 4249284,
     "modelRotation": [
       0,
       0,
       0
     ],
-    "stlUnits": "mm",
-    "stlScope": "assembly"
+    "cultsUrl": "https://cults3d.com/en/3d-model/naughties/flame-posture-collar-panel-poor-little-thing"
   },
   {
     "id": "tenderizer",
@@ -586,18 +499,15 @@
     "title": "Luer Lock Needle Mace",
     "category": "Toys",
     "model": "/assets/models/tenderizer.glb?v=4229c4a1ac06",
-    "stl": "/downloads/luer-lock-needle-mace-assembly-mm.stl?v=7e43164360ec",
     "poster": "/assets/products/tenderizer/floating-poster.webp?v=f8c83ab43513",
     "background": "/assets/backgrounds/supplied-scene-02.png?v=40fd27d74941",
     "modelBytes": 4527268,
-    "stlBytes": 7433584,
     "modelRotation": [
       0,
       0,
       0
     ],
-    "stlUnits": "mm",
-    "stlScope": "assembly"
+    "cultsUrl": "https://cults3d.com/en/3d-model/naughties/spherical-tenderizer-with-hollow-sockets-poor-little-thing"
   },
   {
     "id": "palm-star",
@@ -606,22 +516,19 @@
     "title": "Star Palm Grip",
     "category": "Toys",
     "model": "/assets/models/palm-star.glb?v=8e3aafee4ab5",
-    "stl": "/downloads/star-palm-grip-assembly-mm.stl?v=355769e39222",
     "poster": "/assets/products/palm-star/floating-poster.webp?v=983b94c811dd",
     "background": "/assets/backgrounds/supplied-scene-06.png?v=6e33fb8bc78d",
     "modelBytes": 306124,
-    "stlBytes": 1289284,
     "modelRotation": [
       0,
       0,
       0
     ],
-    "stlUnits": "mm",
-    "stlScope": "assembly",
     "rotationPivot": [
       -0.13865159737058183,
       0.008113906663183209
-    ]
+    ],
+    "cultsUrl": "https://cults3d.com/en/3d-model/naughties/palm-star-spiked-grip-poor-little-thing"
   },
   {
     "id": "palm-heart",
@@ -630,22 +537,19 @@
     "title": "Heart Palm Grip",
     "category": "Toys",
     "model": "/assets/models/palm-heart.glb?v=1834c1a08bec",
-    "stl": "/downloads/heart-palm-grip-assembly-mm.stl?v=d8a809fe8f7b",
     "poster": "/assets/products/palm-heart/floating-poster.webp?v=e98454c4103d",
     "background": "/assets/backgrounds/supplied-scene-01.png?v=ebdb635a0c8b",
     "modelBytes": 330652,
-    "stlBytes": 1508884,
     "modelRotation": [
       0,
       0,
       0
     ],
-    "stlUnits": "mm",
-    "stlScope": "assembly",
     "rotationPivot": [
       0.09224562934470261,
       0.17283855995691677
-    ]
+    ],
+    "cultsUrl": "https://cults3d.com/en/3d-model/naughties/palm-heart-spiked-grip-poor-little-thing"
   },
   {
     "id": "two-handed-spike-roller",
@@ -654,18 +558,15 @@
     "title": "Spiked Rolling Pin",
     "category": "Toys",
     "model": "/assets/models/two-handed-spike-roller.glb?v=981298378210",
-    "stl": "/downloads/spiked-rolling-pin-assembly-mm.stl?v=aadde30d58f6",
     "poster": "/assets/products/two-handed-spike-roller/floating-poster.webp?v=6799ac8b291c",
     "background": "/assets/backgrounds/supplied-scene-07.png?v=e2babf509e2d",
     "modelBytes": 6619812,
-    "stlBytes": 9755084,
     "modelRotation": [
       0,
       0,
       0
     ],
-    "stlUnits": "mm",
-    "stlScope": "assembly"
+    "cultsUrl": "https://cults3d.com/en/3d-model/naughties/orbit-two-handle-spiked-rolling-pin-poor-little-thing"
   },
   {
     "id": "ram-horn-headband",
@@ -674,18 +575,15 @@
     "title": "Ram Horn Headband",
     "category": "Apparel",
     "model": "/assets/models/ram-horn-headband.glb?v=1e8645d79405",
-    "stl": "/downloads/ram-horn-headband-assembly-mm.stl?v=f22d8ae169e2",
     "poster": "/assets/products/ram-horn-headband/floating-poster.webp?v=263733904117",
     "background": "/assets/backgrounds/supplied-scene-08.png?v=28c2a6839da0",
     "modelBytes": 2879988,
-    "stlBytes": 14208084,
     "modelRotation": [
       0,
       0,
       0
     ],
-    "stlUnits": "mm",
-    "stlScope": "assembly"
+    "cultsUrl": "https://cults3d.com/en/3d-model/fashion/red-ram-horn-headband-poor-little-thing"
   },
   {
     "id": "single-spike-screw-clamp",
@@ -694,18 +592,15 @@
     "title": "Single Spike Screw Clamp",
     "category": "Toys",
     "model": "/assets/models/single-spike-screw-clamp.glb?v=f8677f816eec",
-    "stl": "/downloads/single-spike-screw-clamp-assembly-mm.stl?v=591af0a17575",
     "poster": "/assets/products/single-spike-screw-clamp/floating-poster.webp?v=0cb88a971dfa",
     "background": "/assets/backgrounds/supplied-scene-05.png?v=384d19d89a51",
     "modelBytes": 389964,
-    "stlBytes": 1372084,
     "modelRotation": [
       0,
       0,
       0
     ],
-    "stlUnits": "mm",
-    "stlScope": "assembly"
+    "cultsUrl": "https://cults3d.com/en/3d-model/naughties/little-c-single-point-clamp-poor-little-thing"
   },
   {
     "id": "spring-loaded-roller-press",
@@ -714,18 +609,15 @@
     "title": "Spring-Loaded Roller Press",
     "category": "Toys",
     "model": "/assets/models/spring-loaded-roller-press.glb?v=6c01cd861b91",
-    "stl": "/downloads/spring-loaded-roller-press-assembly-mm.stl?v=6e3044b1ee86",
     "poster": "/assets/products/spring-loaded-roller-press/floating-poster.webp?v=8cf946457060",
     "background": "/assets/backgrounds/supplied-scene-04.png?v=6df51b5189e2",
     "modelBytes": 10003692,
-    "stlBytes": 3664684,
     "modelRotation": [
       0,
       0,
       0
     ],
-    "stlUnits": "mm",
-    "stlScope": "assembly"
+    "cultsUrl": "https://cults3d.com/en/3d-model/naughties/orbit-spring-roller-press-poor-little-thing"
   },
   {
     "id": "single-sided-spike-cap",
@@ -734,18 +626,15 @@
     "title": "Single-Sided Spiked Cap",
     "category": "Toys",
     "model": "/assets/models/single-sided-spike-cap.glb?v=861411f0abff",
-    "stl": "/downloads/single-sided-spiked-cap-assembly-mm.stl?v=8b16bbfc07bd",
     "poster": "/assets/products/single-sided-spike-cap/floating-poster.webp?v=8ae81f90f515",
     "background": "/assets/backgrounds/supplied-scene-09.png?v=f646f5979ed2",
     "modelBytes": 148008,
-    "stlBytes": 528884,
     "modelRotation": [
       0,
       0,
       0
     ],
-    "stlUnits": "mm",
-    "stlScope": "assembly"
+    "cultsUrl": "https://cults3d.com/en/3d-model/naughties/single-sided-serrated-cap-poor-little-thing"
   },
   {
     "id": "double-sided-spike-cap",
@@ -754,18 +643,15 @@
     "title": "Double-Sided Spiked Cap",
     "category": "Toys",
     "model": "/assets/models/double-sided-spike-cap.glb?v=b65ca0070095",
-    "stl": "/downloads/double-sided-spiked-cap-assembly-mm.stl?v=9f8f9ec43069",
     "poster": "/assets/products/double-sided-spike-cap/floating-poster.webp?v=8f6dc2c08de7",
     "background": "/assets/backgrounds/supplied-scene-03.png?v=5654096dcee6",
     "modelBytes": 187308,
-    "stlBytes": 645684,
     "modelRotation": [
       0,
       0,
       0
     ],
-    "stlUnits": "mm",
-    "stlScope": "assembly"
+    "cultsUrl": "https://cults3d.com/en/3d-model/naughties/double-sided-serrated-cap-poor-little-thing"
   },
   {
     "id": "claw-hammer",
@@ -774,17 +660,14 @@
     "title": "Claw Hammer",
     "category": "Toys",
     "model": "/assets/models/claw-hammer.glb?v=e353547e7266",
-    "stl": "/downloads/claw-hammer-assembly-mm.stl?v=c529c207c344",
     "poster": "/assets/products/claw-hammer/floating-poster.webp?v=1b8371fafa58",
     "background": "/assets/backgrounds/supplied-scene-02.png?v=40fd27d74941",
     "modelBytes": 495128,
-    "stlBytes": 2125784,
     "modelRotation": [
       0,
       0,
       0
     ],
-    "stlUnits": "mm",
-    "stlScope": "assembly"
+    "cultsUrl": "https://cults3d.com/en/3d-model/naughties/claw-hammer-with-textured-grip-poor-little-thing"
   }
 ]

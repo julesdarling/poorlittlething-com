@@ -20,7 +20,6 @@ function createPiece(product, index) {
   card.className = 'product-card';
   card.dataset.category = product.category;
   const title = escapeHtml(product.title);
-  const downloadSize = Number.isFinite(product.stlBytes) && product.stlBytes > 0 ? ` ${(product.stlBytes / 1_000_000).toFixed(1)} MB` : '';
   card.innerHTML = `
     <div class="object-stage" tabindex="0" role="slider" aria-label="Turn ${title}" aria-valuemin="-180" aria-valuemax="180" aria-valuenow="0" aria-valuetext="0 degrees" aria-orientation="horizontal" aria-describedby="viewer-keyboard-help viewer-state-${index}">
       <img class="viewer-background" src="${escapeHtml(product.background || '/assets/backgrounds/supplied-scene-01.png?v=ebdb635a0c8b')}" alt="" aria-hidden="true" width="1000" height="1000" loading="lazy" />
@@ -29,13 +28,13 @@ function createPiece(product, index) {
       <span class="viewer-state sr-only" id="viewer-state-${index}">Interactive 3D</span>
     </div>
     <button class="retry-3d" type="button" hidden>Retry 3D</button>
-    <div class="piece-heading"><h3 class="piece-title">${title}</h3><a class="stl-download" href="${escapeHtml(product.stl)}" download="poor-little-thing-${escapeHtml(product.id)}-assembly-mm.stl" aria-label="Download ${title} STL${downloadSize}" aria-describedby="download-tooltip-${index}"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m-5-5 5 5 5-5M5 17v4h14v-4"/></svg><span class="download-tooltip" id="download-tooltip-${index}" role="tooltip">Download STL${downloadSize}</span></a></div>`;
-  const download = card.querySelector('.stl-download');
-  download.addEventListener('keydown', event => {
-    if (event.key === 'Escape') download.classList.add('tooltip-dismissed');
+    <div class="piece-heading"><h3 class="piece-title">${title}</h3><a class="cults-link" href="${escapeHtml(product.cultsUrl)}" target="_blank" rel="noopener noreferrer" aria-label="View ${title} on Cults3D for $6.66" aria-describedby="cults-tooltip-${index}"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3h7v7m0-7L10 14M10 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-5"/></svg><span class="cults-tooltip" id="cults-tooltip-${index}" role="tooltip">View on Cults3D · $6.66</span></a></div>`;
+  const cultsLink = card.querySelector('.cults-link');
+  cultsLink.addEventListener('keydown', event => {
+    if (event.key === 'Escape') cultsLink.classList.add('tooltip-dismissed');
   });
-  download.addEventListener('pointerenter', () => download.classList.remove('tooltip-dismissed'));
-  download.addEventListener('focus', () => download.classList.remove('tooltip-dismissed'));
+  cultsLink.addEventListener('pointerenter', () => cultsLink.classList.remove('tooltip-dismissed'));
+  cultsLink.addEventListener('focus', () => cultsLink.classList.remove('tooltip-dismissed'));
   const controller = gallery3D.add(card, product);
   controllers.push(controller);
   card._pieceController = controller;
@@ -71,7 +70,7 @@ async function loadCollection() {
     if (!response.ok) throw new Error('Collection unavailable');
     const data = await response.json();
     if (!Array.isArray(data) || data.length === 0) throw new Error('Collection unavailable');
-    products = data.filter(product => product.title && product.model && product.stl);
+    products = data.filter(product => product.title && product.model && product.cultsUrl);
     if (!products.length) throw new Error('Collection unavailable');
     gallery3D = await (galleryPromise ||= import('./gallery-3d.js').then(({ createGallery3D }) => createGallery3D({ reduceMotion })));
     controllers.forEach(controller => controller.dispose());
