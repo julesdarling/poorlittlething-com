@@ -22,7 +22,7 @@ The GitHub Actions workflow builds and deploys `dist/` when `main` changes. To i
 ## Content
 
 - `public/products.json` contains each piece's canonical design ID, descriptive title, section category, Cults3D listing URL (`cultsUrl`), colored GLB, and preview image URLs.
-- `src/collection-groups.js` defines the section order and six-product initial limit: Leashes, Tools, Predicament, Sensation & spankers, Scratchers, Clamps, Roller spikes, Collars, and Headbands.
+- `src/collection-groups.js` defines the section order and six-product initial limit: Tools, Predicament, Sensation & spankers, Scratchers, Clamps, Roller spikes, Leashes, Collars, and Headbands.
 - `public/assets/models/` holds the interactive colored GLB display models.
 - `public/assets/products/` holds transparent fallback poster images.
 - `public/assets/backgrounds/` holds nine supplied flat backdrops with varied assignments across the catalogue.
