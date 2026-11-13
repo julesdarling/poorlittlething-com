@@ -22,7 +22,7 @@ The GitHub Actions workflow builds and deploys `dist/` when `main` changes. To i
 ## Content
 
 - `public/products.json` contains each piece's canonical design ID, descriptive title, section category, Cults3D listing URL (`cultsUrl`), colored GLB, and preview image URLs.
-- `src/collection-groups.js` defines the section order and six-product initial limit: Collars, Tools, Scratchers, Hammers, Clamps, Headbands, and Roller spikes.
+- `src/collection-groups.js` defines the section order and six-product initial limit: Leashes, Tools, Predicament, Sensation & spankers, Scratchers, Clamps, Roller spikes, Collars, and Headbands.
 - `public/assets/models/` holds the interactive colored GLB display models.
 - `public/assets/products/` holds transparent fallback poster images.
 - `public/assets/backgrounds/` holds nine supplied flat backdrops with varied assignments across the catalogue.
@@ -32,7 +32,7 @@ The GitHub Actions workflow builds and deploys `dist/` when `main` changes. To i
 - `src/style.css` defines the layout and brand colors.
 - `src/gallery-3d.js` controls the interactive gallery.
 
-The catalogue contains all 44 approved non-tag designs, including the Ring Clamp Pair, Three-Foot Chain Leash, Toy Pliers, Candy Hearts Collar, and Large Spike Collar. Each product card links to its individual public Cults3D listing, priced at US$6.66 with a personal-use license. Purchase, licensing, and delivery of the printable files happen on Cults3D. The website has no checkout, visitor accounts, analytics, or form backend.
+The catalogue contains all 44 approved non-tag designs, including Nipple Clamps, Three-Foot Chain Leash, Toy Pliers, Candy Hearts Collar, and Large Spike Collar. Each product card links to its individual public Cults3D listing, priced at US$6.66 with a personal-use license. Purchase, licensing, and delivery of the printable files happen on Cults3D. The website has no checkout, visitor accounts, analytics, or form backend.
 
 The site does not host STL, 3MF, G-code, or ZIP print downloads. The former collection and tag bundles, assembly STLs, tag inputs, bundle manifest, and packaging script were preserved outside this repository at `../website-setup-evidence/cults-links-2026-11-12/retired-site-downloads/`. Their file sizes and SHA-256 hashes are recorded in `../website-setup-evidence/cults-links-2026-11-12/retired-downloads-manifest.json`. Keep historical and canonical print sources outside the website's public assets.
 
